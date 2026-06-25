@@ -1,3 +1,31 @@
+################################################################
+# Art2all – Friedenstaube
+################################################################
+Version: 1.0
+
+Status: Living Document
+
+Letzte Aktualisierung: 25.06.2026
+
+Autor:
+Stephan Kästner
+mit Unterstützung von ChatGPT
+################################################################
+################################################################
+
+
+# Art2all
+
+> **Gemeinsam erwecken wir die Friedenstaube.**
+
+Art2all ist ein weltweites Kunstprojekt, bei dem Kinderzeichnungen gemeinsam eine lebendige Friedenstaube erschaffen.
+
+📖 Die Vision des Projekts findest du unter:
+
+- docs/FOUNDATION.md
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

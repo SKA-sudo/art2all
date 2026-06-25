@@ -1,8 +1,10 @@
 import { useMemo } from "react";
 import Paper from "./Paper";
+import DebugFace from "./DebugFace";
 import { extractFaces } from "../utils/FaceExtractor";
 import { filterFaces } from "../utils/FaceFilter";
 import { createPlacementData } from "../utils/PlacementEngine";
+
 
 
 const drawings = [
@@ -32,6 +34,8 @@ const drawings = [
   "/drawings/demo/Sternschnuppe.png",
   "/drawings/demo/Wolken.png",
 ];
+const DEBUG = true;
+
 
 export default function DoveSurface({ mesh }) {
   
@@ -49,16 +53,24 @@ export default function DoveSurface({ mesh }) {
 
    return (
   <>
-    {placements.map((item, i) => (
-      <Paper
-        key={i}
-        position={item.position}
-        normal={item.normal}
-        rotation={item.rotation}
-        image={item.image}
-        scale={item.scale}
-      />
-    ))}
+    {placements.map((item, i) =>
+      DEBUG ? (
+        <DebugFace
+          key={i}
+          position={item.position}
+          normal={item.normal}
+        />
+      ) : (
+        <Paper
+          key={i}
+          position={item.position}
+          normal={item.normal}
+          rotation={item.rotation}
+          image={item.image}
+          scale={item.scale}
+        />
+      )
+    )}
   </>
 );
 
