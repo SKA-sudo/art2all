@@ -1,47 +1,54 @@
 import { useMemo } from "react";
 import { Billboard, Image } from "@react-three/drei";
-import * as THREE from "three";
-import { MeshSurfaceSampler } from "three/examples/jsm/math/MeshSurfaceSampler";
+import { extractFaces } from "../utils/FaceExtractor";
+import { filterFaces } from "../utils/FaceFilter";
+import { createPlacementData } from "../utils/PlacementEngine";
 
 const drawings = [
-  "/drawings/demo/herz.png",
-  "/drawings/demo/baum.png",
-  "/drawings/demo/blume.png",
-  "/drawings/demo/familie.png",
-  "/drawings/demo/haus.png",
-  "/drawings/demo/peace.png",
-  "/drawings/demo/regenbogen.png",
-  "/drawings/demo/sonne.png",
-  "/drawings/demo/welt.png",
+  "/drawings/demo/Baum.png",
+  "/drawings/demo/Blume.png",
+  "/drawings/demo/Erde.png",
+  "/drawings/demo/Erde-herz.png",
+  "/drawings/demo/Familie.png",
+  "/drawings/demo/Friedenstaube.png",
+  "/drawings/demo/Haende.png",
+  "/drawings/demo/Haus.png",
+  "/drawings/demo/Herz.png",
+  "/drawings/demo/Hund.png",
+  "/drawings/demo/kinder.png",
+  "/drawings/demo/Luftballons.png",
+  "/drawings/demo/Meer.png",
+  "/drawings/demo/Peace-hand.png",
+  "/drawings/demo/Peace-Zeichen.png",
+  "/drawings/demo/Regenbogen.png",
+  "/drawings/demo/Regenbogen2.png",
+  "/drawings/demo/Roteblume.png",
+  "/drawings/demo/Schmetterling.png",
+  "/drawings/demo/Smiley.png",
+  "/drawings/demo/Sonne.png",
+  "/drawings/demo/Sonnenblume.png",
+  "/drawings/demo/Sterne.png",
+  "/drawings/demo/Sternschnuppe.png",
+  "/drawings/demo/Wolken.png",
 ];
 
 export default function DoveSurface({ mesh }) {
   
-  const points = useMemo(() => {
+  const placements = useMemo(() => {
+  if (!mesh) return [];
 
-    if (!mesh) return [];
-    mesh.updateMatrixWorld(true);
-    const sampler = new MeshSurfaceSampler(mesh).build();
+  mesh.updateMatrixWorld(true);
 
-  const pos = new THREE.Vector3();
-  const result = [];
+  const faces = extractFaces(mesh);
+  const filteredFaces = filterFaces(faces);
 
-  for (let i = 0; i < 300; i++) {
-    sampler.sample(pos);
+  return createPlacementData(filteredFaces, drawings);
 
-    result.push({
-      position: pos.clone(),
-      image: drawings[i % drawings.length],
-      scale: 0.30 + Math.random() * 0.08,
-      rotation: (Math.random() - 0.5) * 0.15,
-    });
-  }
-
-  return result;
 }, [mesh]);
+
    return (
     <>
-      {points.map((item, i) => (
+      {placements.map((item, i) => (
         <Billboard
           key={i}
           position={item.position}

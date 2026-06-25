@@ -2,23 +2,40 @@ import { useRef, useEffect, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import DoveSurface from "./DoveSurface";
+import { inspectGeometry } from "../utils/GeometryInspector";
+import { extractFaces } from "../utils/FaceExtractor";
+import { filterFaces } from "../utils/FaceFilter";
+
+
+
 
 /* -------------------- TAUBE -------------------- */
 export default function DoveModel({ flapRef }) {
-  const group = useRef();
 
+  const group = useRef();
   const { scene, animations } = useGLTF("/models/peace_dove.glb");
   const mesh = useMemo(() => {
-    let found = null;
+  let found = null;
 
-    scene.traverse((child) => {
-      if (child.isMesh && !found) {
+  scene.traverse((child) => {
+    if (
+      child.isMesh &&
+      child.geometry &&
+      child.geometry.attributes.position
+    ) {
+      console.log(
+        child.name,
+        child.geometry.attributes.position.count
+      );
+
+      if (!found) {
         found = child;
       }
-    });
+    }
+  });
 
-    return found;
-  }, [scene]);
+  return found;
+}, [scene]);
 
   const { actions } = useAnimations(animations, group);
 
@@ -30,7 +47,16 @@ useEffect(() => {
       console.log("Vertices:", child.geometry.attributes.position.count);
     }
   });
-}, [scene]);
+
+  inspectGeometry(mesh);
+
+const faces = extractFaces(mesh);
+const filteredFaces = filterFaces(faces);
+
+console.log("Faces:", faces.length);
+console.log("Gefiltert:", filteredFaces.length);
+console.log(filteredFaces[0]);
+}, [scene, mesh]);
 
 
   useEffect(() => {
