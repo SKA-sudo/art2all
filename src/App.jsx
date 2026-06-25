@@ -6,7 +6,7 @@ import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useTexture } from "@react-three/drei";
 import { Points, PointMaterial } from "@react-three/drei";
 import { useGLTF, useAnimations } from "@react-three/drei";
-
+import { MeshSurfaceSampler } from "three/examples/jsm/math/MeshSurfaceSampler";
 
 
 /* -------------------- TAUBE -------------------- */
@@ -15,6 +15,17 @@ function DoveModel({ flapRef }) {
 
   const { scene, animations } = useGLTF("/models/peace_dove.glb");
   const { actions } = useAnimations(animations, group);
+
+
+useEffect(() => {
+  scene.traverse((child) => {
+    if (child.isMesh) {
+      console.log("Mesh gefunden:", child.name);
+      console.log("Vertices:", child.geometry.attributes.position.count);
+    }
+  });
+}, [scene]);
+
 
   useEffect(() => {
     const action = Object.values(actions || {})[0];
