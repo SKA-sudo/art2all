@@ -1,27 +1,72 @@
-// /scene/Scene.jsx
-import { useRef } from "react";
-import { useSkySystem } from "../systems/useSkySystem";
-import Dove from "../dove/Dove";
-import ParticleSystem from "../particles/ParticleSystem";
-console.log("SCENE RENDER");
+import { useRef, useMemo } from "react";
+import Sky from "./Sky";
+import Clouds from "./Clouds";
+import LightRays from "./LightRays";
+import GlowParticles from "./GlowParticles";
+import DoveModel from "./DoveModel";
+
+/* -------------------- SCENE -------------------- */
 export default function Scene() {
+  const energyRef = useRef(0);
   const flapRef = useRef(0);
 
-  useSkySystem();
+
+  const drawings = useMemo(() => {
+  const base = [
+  { src: "/drawings/demo/baum.png", zone: "body" },
+  { src: "/drawings/demo/blume.png", zone: "body" },
+  { src: "/drawings/demo/familie.png", zone: "body" },
+
+  { src: "/drawings/demo/haus.png", zone: "leftWing" },
+  { src: "/drawings/demo/herz.png", zone: "leftWing" },
+
+  { src: "/drawings/demo/regenbogen.png", zone: "rightWing" },
+  { src: "/drawings/demo/sonne.png", zone: "rightWing" },
+
+  { src: "/drawings/demo/welt.png", zone: "tail" },
+
+  { src: "/drawings/demo/peace.png", zone: "head" },
+];
+
+  const result = [];
+
+for (let i = 0; i < 120; i++) {
+  const img = base[Math.floor(Math.random() * base.length)];
+  let zone;
+
+  if (i < 10) zone = "head";
+  else if (i < 45) zone = "body";
+  else if (i < 80) zone = "leftWing";
+  else if (i < 115) zone = "rightWing";
+  else zone = "tail";
+
+  result.push({
+    src: img.src,
+    zone,
+    weight: 0.8 + Math.random() * 0.4,
+  });
+}
+
+  return result;
+}, []);
 
   return (
     <>
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[3, 5, 3]} intensity={1.5} />
+      <fog attach="fog" args={["#0b1220", 45, 140]} />
 
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[200, 200]} />
-        <meshStandardMaterial color="#f5f5f5" />
-      </mesh>
+      <ambientLight intensity={0.25} />
+      <directionalLight position={[8, 14, 6]} intensity={2.2} />
 
+      <Sky />
+      <Clouds />
+        <LightRays position={[0, 12, -50]} />
+        <GlowParticles />
 
-      <Dove flapRef={flapRef} />
-      <ParticleSystem flapRef={flapRef} />
+      {/* Taube */}
+      
+      <DoveModel flapRef={flapRef} />
+      {/* <SamplePoints /> */}
+      
     </>
   );
 }
