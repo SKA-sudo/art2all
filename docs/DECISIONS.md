@@ -56,6 +56,7 @@ Das macht spätere Architekturentscheidungen viel einfacher.
 Warum?->
 Weil jede Generation ihre eigene Geschichte erzählen soll.
 
-Decision 0003:
-Story First ->
+Decision 0003 - Story First:
+Status:
+✅ Accepted
 Technische Entscheidungen werden immer anhand der Geschichte bewertet.
