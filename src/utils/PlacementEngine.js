@@ -1,4 +1,6 @@
-export function createPlacementData(faces, drawings) {
+import { getFlowZone } from "./FlowZoneEngine";
+
+export function createPlacementData(faces, drawings, bounds) {
   if (!faces.length || !drawings.length) return [];
 
   const placements = [];
@@ -12,6 +14,7 @@ export function createPlacementData(faces, drawings) {
     const scale = baseScale * (0.85 + Math.random() * 0.3);
 
     placements.push({
+      zone: getFlowZone(face, bounds),
       position: face.center.clone(),
       normal: face.normal.clone(),
 
@@ -25,9 +28,18 @@ export function createPlacementData(faces, drawings) {
       scale,
       rotation: 0,
     });
-  }
+   
+}
+  
+  const stats = {};
 
-  console.log("🪶 Placements:", placements.length);
-console.log("Placements:", placements);
-  return placements;
+placements.forEach((p) => {
+  stats[p.zone] = (stats[p.zone] || 0) + 1;
+});
+
+console.table(stats);
+
+console.log("🪶 Placements:", placements.length);
+
+return placements;
 }

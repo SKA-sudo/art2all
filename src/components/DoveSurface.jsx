@@ -44,11 +44,18 @@ export default function DoveSurface({ mesh }) {
   if (!mesh) return [];
 
   mesh.updateMatrixWorld(true);
+  mesh.geometry.computeBoundingBox();
+
+  const bounds = mesh.geometry.boundingBox;
 
   const faces = extractFaces(mesh);
   const filteredFaces = filterFaces(faces);
 
-  return createPlacementData(filteredFaces, drawings);
+  return createPlacementData(
+  filteredFaces,
+  drawings,
+  bounds
+);
 
 }, [mesh]);
 const featherRow = useMemo(() => {
