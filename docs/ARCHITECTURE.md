@@ -18,7 +18,7 @@ mit Unterstützung von ChatGPT
 ################################################################
 
 
-# Art2all Engine – Master Architecture v1.0
+#   Art2all Engine – Master Architecture v1.0
 
 
                      Art2all

@@ -5,7 +5,8 @@ import { extractFaces } from "../utils/FaceExtractor";
 import { filterFaces } from "../utils/FaceFilter";
 import { createPlacementData } from "../utils/PlacementEngine";
 
-
+const USE_FEATHER_ROW_TEST = true;
+const FEATHER_LAB = true;
 
 const drawings = [
   "/drawings/demo/Baum.png",
@@ -50,8 +51,59 @@ export default function DoveSurface({ mesh }) {
   return createPlacementData(filteredFaces, drawings);
 
 }, [mesh]);
+const featherRow = useMemo(() => {
+
+  const papers = [];
+
+  for (let i = 0; i < 30; i++) {
+
+    const t = i / 29;
+
+    papers.push({
+
+      image: drawings[i % drawings.length],
+
+      position: [
+        -1.2 + t * 2.4,
+        0.35 + Math.sin(t * Math.PI) * 0.25,
+        -t * 0.15
+      ],
+
+      rotation: (Math.random() - 0.5) * 0.25,
+
+      scale: 0.18 + Math.random() * 0.03,
+
+      normal: null
+
+    });
+
+  }
+
+  return papers;
+
+}, []);
+
+
 console.log("Placements in DoveSurface:", placements.length);
-   return (
+
+if (FEATHER_LAB) {
+  return (
+    <>
+      {featherRow.map((paper, i) => (
+        <Paper
+          key={i}
+          position={paper.position}
+          image={paper.image}
+          rotation={paper.rotation}
+          scale={paper.scale}
+          normal={paper.normal}
+        />
+      ))}
+    </>
+  );
+}
+
+return (
   <>
     {placements.map((item, i) =>
       DEBUG ? (

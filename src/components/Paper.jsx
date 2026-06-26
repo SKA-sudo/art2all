@@ -1,44 +1,56 @@
 import { Image } from "@react-three/drei";
 import { useMemo } from "react";
 import * as THREE from "three";
+import { createRoundedPlane } from "../utils/RoundedPlaneGeometry";
+import { useTexture } from "@react-three/drei";
 
 export default function Paper({
   position,
   normal,
-  rotation,
+  rotation = 0,
   image,
   scale,
 }) {
+
+  const geometry = useMemo(() => {
+    return createRoundedPlane(1, 1, 0.08, 12);
+  }, []);
+  const texture = useTexture(image);
+    
   const quaternion = useMemo(() => {
-    // Normale ausrichten
+    // Ohne Oberflächennormale: keine Ausrichtung notwendig
+    if (!normal) {
+      return new THREE.Quaternion();
+    }
+
+    const n = normal.clone().normalize();
+
     const align = new THREE.Quaternion().setFromUnitVectors(
       new THREE.Vector3(0, 0, 1),
-      normal.clone().normalize()
+      n
     );
 
-    // Zusätzliche Drehung um die Normale
     const twist = new THREE.Quaternion().setFromAxisAngle(
-      normal.clone().normalize(),
+      n,
       rotation
     );
+    return align.multiply(twist);
 
-    // Erst ausrichten, dann drehen
-    align.multiply(twist);
-
-    return align;
-  }, [normal, rotation]);
+}, [normal, rotation]);
 
   return (
     <group
       position={position}
       quaternion={quaternion}
+      rotation={!normal ? [0, 0, rotation] : undefined}
     >
-      <Image
-        url={image}
+      <mesh geometry={geometry}>
+      <meshStandardMaterial
+        map={texture}
         transparent
-        toneMapped={false}
-        scale={[scale, scale]}
+        side={THREE.DoubleSide}
       />
+    </mesh>
     </group>
   );
-}
+} 

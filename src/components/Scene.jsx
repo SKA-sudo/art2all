@@ -4,6 +4,8 @@ import Clouds from "./Clouds";
 import LightRays from "./LightRays";
 import GlowParticles from "./GlowParticles";
 import DoveModel from "./DoveModel";
+import FeatherLab from "./lab/FeatherLab";
+import FeatherPrototype from "./lab/FeatherPrototype";
 
 /* -------------------- SCENE -------------------- */
 export default function Scene() {
@@ -66,7 +68,14 @@ for (let i = 0; i < 120; i++) {
       
       <DoveModel flapRef={flapRef} />
       {/* <SamplePoints /> */}
-      
+
+       <group position={[0, 1, 5]}>
+
+<FeatherPrototype />
+
+  
+</group>
+
     </>
   );
 }
