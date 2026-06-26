@@ -1,5 +1,7 @@
 import DebugPoints from "./debug/DebugPoints";
 import DebugNormals from "./debug/DebugNormals";
+import DebugFaces from "./debug/DebugFaces";
+import DebugPlacement from "./debug/DebugPlacement";
 
 export default function DebugFace({
   position,
@@ -13,16 +15,24 @@ export default function DebugFace({
 
   return (
   <>
-    <DebugPoints
-      a={a}
-      b={b}
-      c={c}
-    />
+  <DebugFaces
+    a={a}
+    b={b}
+    c={c}
+  />
 
-    <DebugNormals
-      position={position}
-      normal={normal}
-    />
-  </>
+  <DebugPoints
+    a={a}
+    b={b}
+    c={c}
+  />
+
+  <DebugNormals
+    position={position}
+    normal={normal}
+    
+  />
+  <DebugPlacement position={position} />
+</>
 );
 }
