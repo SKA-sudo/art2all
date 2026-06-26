@@ -45,6 +45,11 @@ export function extractFaces(mesh) {
 
     faces.push({
       faceIndex: i,
+
+      a: a.clone(),
+      b: b.clone(),
+      c: c.clone(),
+
       center: center.clone(),
       normal: normal.clone(),
       area: triangle.getArea(),

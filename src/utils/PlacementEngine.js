@@ -14,6 +14,11 @@ export function createPlacementData(faces, drawings) {
     placements.push({
       position: face.center.clone(),
       normal: face.normal.clone(),
+
+      a: face.a.clone(),
+      b: face.b.clone(),
+      c: face.c.clone(),
+
       area: face.area,
       image: drawings[i % drawings.length],
 
@@ -23,6 +28,6 @@ export function createPlacementData(faces, drawings) {
   }
 
   console.log("🪶 Placements:", placements.length);
-
+console.log("Placements:", placements);
   return placements;
 }

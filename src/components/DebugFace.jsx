@@ -1,25 +1,28 @@
-import * as THREE from "three";
+import DebugPoints from "./debug/DebugPoints";
+import DebugNormals from "./debug/DebugNormals";
 
-export default function DebugFace({ position, normal }) {
+export default function DebugFace({
+  position,
+  normal,
+  area,
+  a,
+  b,
+  c,
+}) {
+  if (!a || !b || !c) return null;
+
   return (
-    <group position={position}>
-      {/* Mittelpunkt */}
-      <mesh>
-        <sphereGeometry args={[0.01, 8, 8]} />
-        <meshBasicMaterial color="red" />
-      </mesh>
+  <>
+    <DebugPoints
+      a={a}
+      b={b}
+      c={c}
+    />
 
-      {/* Normale */}
-      <primitive
-        object={
-          new THREE.ArrowHelper(
-            normal.clone().normalize(),
-            new THREE.Vector3(0, 0, 0),
-            0.05,
-            0x00ff00
-          )
-        }
-      />
-    </group>
-  );
+    <DebugNormals
+      position={position}
+      normal={normal}
+    />
+  </>
+);
 }

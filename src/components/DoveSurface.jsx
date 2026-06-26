@@ -50,7 +50,7 @@ export default function DoveSurface({ mesh }) {
   return createPlacementData(filteredFaces, drawings);
 
 }, [mesh]);
-
+console.log("Placements in DoveSurface:", placements.length);
    return (
   <>
     {placements.map((item, i) =>
@@ -59,6 +59,10 @@ export default function DoveSurface({ mesh }) {
           key={i}
           position={item.position}
           normal={item.normal}
+          area={item.area}
+          a={item.a}
+          b={item.b}
+          c={item.c}
         />
       ) : (
         <Paper
@@ -73,5 +77,4 @@ export default function DoveSurface({ mesh }) {
     )}
   </>
 );
-
 }
