@@ -7,7 +7,6 @@ Version: 1.0
 
 Status: Living Document
 
-Letzte Aktualisierung: 26.06.2026
 
 Autor:
 Stephan Kästner
@@ -65,6 +64,40 @@ mit Unterstützung von ChatGPT
 
                   Paper Renderer (R3F)
 
+
+Local Dove Space
+
+↓
+
+Primary Dove Axis
+
+↓
+
+Local Wing Space
+
+↓
+
+Gesture
+
+↓
+
+Anchor
+
+↓
+
+Guide Shape
+
+↓
+
+Primary Papers
+
+↓
+
+Contour Papers
+
+↓
+
+Fill Papers
 
 
 # Project Architecture

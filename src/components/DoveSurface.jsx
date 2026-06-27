@@ -4,6 +4,8 @@ import DebugFace from "./DebugFace";
 import { extractFaces } from "../utils/FaceExtractor";
 import { filterFaces } from "../utils/FaceFilter";
 import { createPlacementData } from "../utils/PlacementEngine";
+import DebugGesture from "./DebugGesture";
+import { findLeftWingGesture } from "../utils/WingContourBuilder";
 
 const FEATHER_LAB = false;
 const DEBUG = false;
@@ -49,14 +51,17 @@ export default function DoveSurface({ mesh }) {
 
     const faces = extractFaces(mesh);
     const filteredFaces = filterFaces(faces);
+    const gesture = findLeftWingGesture(filteredFaces);
 
-    return createPlacementData(
-      filteredFaces,
-      drawings,
-      bounds
-    );
+    window.__gesture = gesture;
 
-  }, [mesh]);
+        return createPlacementData(
+          filteredFaces,
+          drawings,
+          bounds
+        );
+
+      }, [mesh]);
 
   const featherRow = useMemo(() => {
 
@@ -137,6 +142,12 @@ export default function DoveSurface({ mesh }) {
           />
         )
       )}
+      {window.__gesture && (
+      <DebugGesture
+        shoulder={window.__gesture.shoulder}
+        wingTip={window.__gesture.wingTip}
+      />
+    )}
     </>
   );
 }

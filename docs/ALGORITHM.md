@@ -1,4 +1,24 @@
-Art2all Algorithm
+################################################################
+# Art2all – Art2all Algorithm
+################################################################
+
+
+Version: 1.0
+
+Status: Living Document
+
+
+Autor:
+Stephan Kästner
+mit Unterstützung von ChatGPT
+
+
+################################################################
+################################################################
+
+
+
+
 
 1.
 Wahrnehmung
@@ -42,3 +62,8 @@ Projection auf GLB
 
 9.
 Rendering
+
+
+Die Guide Shape entsteht nicht durch Platzierung, sondern durch einen gerichteten Wachstumsprozess vom Körper zur Flügelspitze.
+
+Wir haben angefangen, eine Engine zu entwerfen, deren Struktur sich an der Wahrnehmung, der Gestaltung und sogar am Wachstum natürlicher Formen orientiert.
