@@ -8,24 +8,46 @@ export function getFlowZone(face, bounds) {
   const x = face.center.x;
   const y = face.center.y;
 
-  // Relative Position (0..1)
   const nx = (x - min.x) / width;
   const ny = (y - min.y) / height;
 
-  // ---------- Flügel ----------
-  if (nx < 0.22) return "leftWing";
-  if (nx > 0.78) return "rightWing";
+  if (nx < 0.22) {
+    if (ny > 0.55) {
+      return {
+        zone: "leftWingShoulder",
+        flow: -25,
+      };
+    }
 
-  // ---------- Kopf ----------
+    return {
+      zone: "leftWingOuter",
+      flow: -40,
+    };
+  }
+
+  if (nx > 0.78) {
+    return {
+      zone: "rightWing",
+      flow: 35,
+    };
+  }
+
   if (ny > 0.88 && nx > 0.40 && nx < 0.60) {
-    return "head";
+    return {
+      zone: "head",
+      flow: 0,
+    };
   }
 
-  // ---------- Schwanz ----------
   if (ny < 0.10 && nx > 0.35 && nx < 0.65) {
-    return "tail";
+    return {
+      zone: "tail",
+      flow: 180,
+    };
   }
 
-  // ---------- Körper ----------
-  return "body";
+  return {
+    zone: "body",
+    flow: 0,
+  };
 }

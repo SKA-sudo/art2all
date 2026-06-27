@@ -5,8 +5,8 @@ import { extractFaces } from "../utils/FaceExtractor";
 import { filterFaces } from "../utils/FaceFilter";
 import { createPlacementData } from "../utils/PlacementEngine";
 
-const USE_FEATHER_ROW_TEST = true;
-const FEATHER_LAB = true;
+const FEATHER_LAB = false;
+const DEBUG = false;
 
 const drawings = [
   "/drawings/demo/Baum.png",
@@ -35,105 +35,108 @@ const drawings = [
   "/drawings/demo/Sternschnuppe.png",
   "/drawings/demo/Wolken.png",
 ];
-const DEBUG = true;
-
 
 export default function DoveSurface({ mesh }) {
-  
+
   const placements = useMemo(() => {
-  if (!mesh) return [];
 
-  mesh.updateMatrixWorld(true);
-  mesh.geometry.computeBoundingBox();
+    if (!mesh) return [];
 
-  const bounds = mesh.geometry.boundingBox;
+    mesh.updateMatrixWorld(true);
+    mesh.geometry.computeBoundingBox();
 
-  const faces = extractFaces(mesh);
-  const filteredFaces = filterFaces(faces);
+    const bounds = mesh.geometry.boundingBox;
 
-  return createPlacementData(
-  filteredFaces,
-  drawings,
-  bounds
-);
+    const faces = extractFaces(mesh);
+    const filteredFaces = filterFaces(faces);
 
-}, [mesh]);
-const featherRow = useMemo(() => {
+    return createPlacementData(
+      filteredFaces,
+      drawings,
+      bounds
+    );
 
-  const papers = [];
+  }, [mesh]);
 
-  for (let i = 0; i < 30; i++) {
+  const featherRow = useMemo(() => {
 
-    const t = i / 29;
+    const papers = [];
 
-    papers.push({
+    for (let i = 0; i < 30; i++) {
 
-      image: drawings[i % drawings.length],
+      const t = i / 29;
 
-      position: [
-        -1.2 + t * 2.4,
-        0.35 + Math.sin(t * Math.PI) * 0.25,
-        -t * 0.15
-      ],
+      papers.push({
 
-      rotation: (Math.random() - 0.5) * 0.25,
+        image: drawings[i % drawings.length],
 
-      scale: 0.18 + Math.random() * 0.03,
+        position: [
+          -1.2 + t * 2.4,
+          0.35 + Math.sin(t * Math.PI) * 0.25,
+          -t * 0.15,
+        ],
 
-      normal: null
+        rotation: (Math.random() - 0.5) * 0.25,
 
-    });
+        flow: 0,
 
+        scale: 0.18 + Math.random() * 0.03,
+
+        normal: null,
+
+      });
+    }
+
+    return papers;
+
+  }, []);
+
+  console.log("Placements:", placements.length);
+
+  if (FEATHER_LAB) {
+
+    return (
+      <>
+        {featherRow.map((paper, i) => (
+          <Paper
+            key={i}
+            position={paper.position}
+            image={paper.image}
+            rotation={paper.rotation}
+            flow={paper.flow}
+            scale={paper.scale}
+            normal={paper.normal}
+          />
+        ))}
+      </>
+    );
   }
 
-  return papers;
-
-}, []);
-
-
-console.log("Placements in DoveSurface:", placements.length);
-
-if (FEATHER_LAB) {
   return (
     <>
-      {featherRow.map((paper, i) => (
-        <Paper
-          key={i}
-          position={paper.position}
-          image={paper.image}
-          rotation={paper.rotation}
-          scale={paper.scale}
-          normal={paper.normal}
-        />
-      ))}
+      {placements.map((item, i) =>
+        DEBUG ? (
+          <DebugFace
+            key={i}
+            position={item.position}
+            normal={item.normal}
+            area={item.area}
+            a={item.a}
+            b={item.b}
+            c={item.c}
+          />
+        ) : (
+          <Paper
+            key={i}
+            position={item.position}
+            normal={item.normal}
+            rotation={item.rotation}
+            flow={item.flow}
+            image={item.image}
+            scale={item.scale}
+          />
+        )
+      )}
     </>
   );
-}
-
-return (
-  <>
-    {placements.map((item, i) =>
-      DEBUG ? (
-        <DebugFace
-          key={i}
-          position={item.position}
-          normal={item.normal}
-          area={item.area}
-          a={item.a}
-          b={item.b}
-          c={item.c}
-        />
-      ) : (
-        <Paper
-          key={i}
-          position={item.position}
-          normal={item.normal}
-          rotation={item.rotation}
-          image={item.image}
-          scale={item.scale}
-        />
-      )
-    )}
-  </>
-);
 }

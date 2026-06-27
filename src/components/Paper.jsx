@@ -8,6 +8,7 @@ export default function Paper({
   position,
   normal,
   rotation = 0,
+  flow = 0,
   image,
   scale,
 }) {
@@ -31,26 +32,27 @@ export default function Paper({
     );
 
     const twist = new THREE.Quaternion().setFromAxisAngle(
-      n,
-      rotation
-    );
-    return align.multiply(twist);
+  n,
+  THREE.MathUtils.degToRad(flow + rotation)
+);
 
-}, [normal, rotation]);
+return align.multiply(twist);
+
+}, [normal, rotation, flow]);
 
   return (
-    <group
-      position={position}
-      quaternion={quaternion}
-      rotation={!normal ? [0, 0, rotation] : undefined}
-    >
-      <mesh geometry={geometry}>
+  <group
+    position={position}
+    quaternion={quaternion}
+    rotation={!normal ? [0, 0, rotation] : undefined}
+  >
+    <mesh geometry={geometry} scale={scale ?? [1.4, 0.9, 1]}>
       <meshStandardMaterial
         map={texture}
         transparent
         side={THREE.DoubleSide}
       />
     </mesh>
-    </group>
-  );
+  </group>
+);
 } 
