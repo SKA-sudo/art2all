@@ -30,3 +30,20 @@ export function buildLeftWingContour(faces, bounds) {
     all: [...top, ...bottom],
   };
 }
+export function findLeftWingGesture(faces) {
+  if (!faces.length) return null;
+
+  const shoulder = faces.reduce((best, face) =>
+    face.center.x > best.center.x ? face : best
+  );
+
+  const wingTip = faces.reduce((best, face) =>
+    face.center.x < best.center.x ? face : best
+  );
+
+  return {
+    shoulder,
+    wingTip,
+    direction: wingTip.center.clone().sub(shoulder.center).normalize(),
+  };
+}
