@@ -90,12 +90,14 @@ export default function DoveModel({ flapRef }) {
       <primitive object={scene} />
       <DoveSurface mesh={mesh} />
 
-      {primaryAxisPoints && (
-        <DebugGesture
-          points={primaryAxisPoints}
-          colors={["blue", "lime", "white", "lime", "red"]}
-        />
-      )}
+      {primaryAxisPoints && primaryAxis && (
+  <DebugGesture
+    points={primaryAxisPoints}
+    colors={["red", "orange", "white", "cyan", "blue"]}
+    leftTransitionRegion={primaryAxis.leftTransitionRegion}
+    rightTransitionRegion={primaryAxis.rightTransitionRegion}
+  />
+)}
     </group>
   );
 }
