@@ -233,3 +233,18 @@ Flügel bildet die Taube
 
 ---
 
+GLB
+
+liefert
+
+- Oberfläche
+- Normalen
+- Volumen
+
+Guide Shape
+
+liefert
+
+- Anordnung
+- Proportion
+- Wirkung

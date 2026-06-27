@@ -1,4 +1,5 @@
 import { getFlowZone } from "./FlowZoneEngine";
+import { buildLeftWingContour } from "./WingContourBuilder";
 
 export function createPlacementData(faces, drawings, bounds) {
   if (!faces.length || !drawings.length) return [];
@@ -12,6 +13,12 @@ export function createPlacementData(faces, drawings, bounds) {
   );
 });
   wingFaces.sort((a, b) => a.center.x - b.center.x);
+  const contour = buildLeftWingContour(wingFaces, bounds);
+
+  console.log("Wing contour:", {
+    top: contour.top.length,
+    bottom: contour.bottom.length,
+  });
   const selectedFaces = wingFaces.filter((_, index) => index % 2 === 0);
   const count = Math.min(selectedFaces.length, 50);
 

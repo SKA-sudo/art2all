@@ -19,6 +19,22 @@ mit Unterstützung von ChatGPT
 
 # Entwicklungsprozess
 
+
+
+PoC 01 ✅
+
+Pipeline validiert
+PoC 02
+
+Anchor Detection
+PoC 03
+
+Guide Silhouette
+PoC 04
+
+Primary Paper Fields
+
+
 Vision
 
 ↓

@@ -16,6 +16,13 @@ mit Unterstützung von ChatGPT
 ################################################################
 
 
+1 Wahrnehmung vor Technik
+2 Wirkung vor Optimierung
+3 Machbarkeit durch Proof of Concept
+4 Algorithmus aus der Wahrnehmung ableiten
+
+
+
 Decision 0001:
 Status:
 ✅ Accepted
@@ -61,3 +68,19 @@ Status:
 ✅ Accepted
 
 Technische Entscheidungen werden immer anhand der Geschichte bewertet.
+
+Decision 0004
+
+PoCs beantworten immer genau
+eine Hypothese.
+
+Decision 0005
+
+Die Paper folgen nicht
+der Mesh-Triangulierung,
+sondern einer Guide Silhouette.
+
+Decision 0006
+
+Die visuelle Hierarchie
+bestimmt die Engine.
