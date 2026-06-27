@@ -1,182 +1,204 @@
-AI_START:
-Lies zuerst diese Datei vollständig.
-Arbeite ausschließlich am CURRENT_TASK.
-Schlage keine neuen Builder oder Architektur vor.
-Prüfe zuerst den aktuellen Code.
+# AI_START (VERPFLICHTEND)
 
+## 1. FOUNDATION
 
-# SESSION
+Lies zuerst vollständig:
 
-CURRENT_TASK:
-PoC 04 – Transition Region
+* FOUNDATION.md
+* SESSION.md
 
-CURRENT_STATUS:
-PoC 03 abgeschlossen.
+Diese Dokumente haben Vorrang vor allen neuen Ideen.
 
-CURRENT_HYPOTHESIS:
-Die Transition Region ist eine semantische Fläche zwischen Body und Wing.
+---
 
-NEXT_ACTION:
-Transition Region verbessern und validieren.
+## 2. Zielbild analysieren
 
-FILES:
-- DoveSpaceBuilder.js
-- DebugGesture.jsx
-- DoveModel.jsx
+Betrachte das kanonische Zielbild.
 
-DONE:
-✓ GeometryInspector
-✓ FaceExtractor
-✓ FaceFilter
-✓ Semantic Dove Space
-✓ Primary Dove Axis
+Vor jedem neuen PoC beantworte zuerst:
 
-LOCKED:
-- GuideShape
-- Primary Papers
-- Contour Papers
+> **Welche Wahrnehmungsregel des Zielbildes soll dieser PoC algorithmisch beschreiben?**
 
+Nicht:
 
-SESSION
-CURRENT_TASK
+> Welchen Builder bauen wir?
 
-PoC 04.5 – Transition Region Quality
+Nicht:
 
-STATUS
+> Welchen Code schreiben wir?
 
-✅ PoC 03 – Primary Dove Axis erfolgreich.
+---
 
-✅ Transition Region erkannt und visualisiert.
+## 3. Wahrnehmung vor Technik
 
-Die Engine erkennt die semantische Hauptachse der Taube sowie die Übergangsbereiche zwischen Körper und Flügel.
+Die Engine entsteht
 
-CURRENT_HYPOTHESIS
+**nicht**
 
-Die Transition Region ist keine Linie und kein einzelner Punkt.
+* aus Anatomie,
+* nicht aus der Mesh-Struktur,
+* nicht aus vorhandenen Datenstrukturen.
 
-Sie beschreibt eine semantische Fläche zwischen Body und Wing.
+Sie entsteht aus der visuellen Wahrnehmung des finalen Kunstwerks.
 
-Der aktuelle Shoulder Point dient lediglich als repräsentativer Mittelpunkt dieser Region.
+Die GLB liefert ausschließlich die Geometrie.
 
-NEXT_ACTION
+Die Architektur entsteht aus den Gesetzen der Wahrnehmung.
 
-Qualität der Transition Region verbessern.
+---
 
-Ziele:
+## 4. Vorgehensweise
 
-Region soll der Anatomie der Taube folgen.
-Region soll flächig statt streifenförmig werden.
-Mittelpunkt soll im visuellen Zentrum der Region liegen.
-Architektur unverändert lassen.
-CURRENT_PIPELINE
+Immer dieselbe Reihenfolge:
 
-GLB
-↓
-GeometryInspector
-↓
-FaceExtractor
-↓
-FaceFilter
-↓
-Semantic Dove Space
-↓
-Primary Dove Axis
-↓
-Transition Region
+1. Zielbild
+2. Wahrnehmungsanalyse
+3. Algorithmus
+4. Minimaler PoC
+5. Validierung
+6. Code
+7. Commit
 
-FILES
-DoveModel.jsx
-DoveSpaceBuilder.js
-DebugGesture.jsx
-DONE
-GeometryInspector
-FaceExtractor
-FaceFilter
-Semantic Dove Space
-Primary Dove Axis
-Transition Region Debug
-LOCKED
-Local Wing Space
-Guide Shape
-Primary Papers
-Contour Papers
-Fill Papers
-PlacementEngine
-SUCCESS_CRITERIA
+Kein Schritt wird übersprungen.
 
-Die Transition Region bildet den anatomischen Schulterbereich stabil und reproduzierbar ab.
+---
 
-Erst danach beginnt die Entwicklung des Local Wing Space.
+## 5. Aktueller Fokus
 
-27.06.2026
+Arbeite ausschließlich am `CURRENT_TASK`.
 
+Vor jeder Änderung:
 
+* aktuellen Code lesen
+* keine neuen Builder
+* keine neue Architektur
+* bestehende Architektur respektieren
+* nur die im SESSION-Dokument genannten Dateien ändern
 
-new
+---
+
+## 6. Wahrnehmungsprinzipien (Art2all)
+
+Bei jedem neuen Algorithmus prüfen:
+
+* Unterstützt er die aufsteigende Gesamtkomposition?
+* Unterstützt er den voluminösen Bauch als visuellen Schwerpunkt?
+* Unterstützt er den leicht größeren, freundlichen Kopf?
+* Unterstützt er die Dominanz der Silhouette?
+* Unterstützt er die Organisation der weißen Papierflächen?
+* Bringt er die Engine näher an die Wirkung des finalen Zielbildes?
+
+Wenn eine dieser Fragen mit **Nein** beantwortet wird, wird der Algorithmus zuerst überarbeitet.
+
+Erst danach wird Code geschrieben.
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 
 # SESSION
 
 ## CURRENT_TASK
 
-PoC 04.5 – Transition Region Quality
+PoC 05 – Local Wing Space (Vorbereitung)
 
 ## STATUS
 
-✅ Primary Dove Axis erfolgreich.
+✅ GeometryInspector abgeschlossen.
 
-✅ Transition Region erfolgreich visualisiert.
+✅ FaceExtractor abgeschlossen.
 
-✅ Face-Normalen der Transition Region visualisiert.
+✅ FaceFilter abgeschlossen.
 
-Die Engine erkennt die semantische Hauptachse und die Übergangsregion zwischen Körper und Flügel.
+✅ Semantic Dove Space abgeschlossen.
+
+✅ Primary Dove Axis abgeschlossen.
+
+✅ Transition Region abgeschlossen.
+
+✅ Transition Region Quality abgeschlossen.
+
+Heute wurde noch kein Local Wing Space implementiert.
+
+Stattdessen wurde der Entwicklungsprozess der Engine grundlegend präzisiert.
+
+---
+
+## WICHTIGSTE ERKENNTNIS
+
+Die Art2all-Engine wird nicht von der Geometrie aus entwickelt.
+
+Sie wird vom **kanonischen Zielbild** aus entwickelt.
+
+Das Zielbild ist die Spezifikation der Engine.
+
+Jeder neue PoC beschreibt genau **eine Wahrnehmungsregel** dieses Zielbildes.
+
+Erst danach werden Algorithmus, PoC und Code entwickelt.
+
+---
 
 ## CURRENT_HYPOTHESIS
 
-Die Transition Region beschreibt eine semantische Fläche.
+Der Local Wing Space soll nicht einfach eine mathematische Flügelachse beschreiben.
 
-Der repräsentative Shoulder Point ist lediglich der Mittelpunkt dieser Region.
+Er soll eine Wahrnehmungsregel des Zielbildes abbilden.
 
-Die aktuelle Region wird noch überwiegend über die Position entlang der Primary Dove Axis bestimmt.
+Vor der Implementierung wird daher zuerst analysiert, welche visuelle Eigenschaft des Flügels algorithmisch beschrieben werden soll.
 
-## ERKENNTNIS
-
-Die Visualisierung der Face-Normalen zeigt innerhalb der Transition Region keine ausreichend charakteristische Änderung.
-
-Face-Normalen werden daher aktuell nicht zur Bestimmung der Transition Region verwendet.
+---
 
 ## NEXT_ACTION
 
-Qualität der Transition Region verbessern.
+Analyse des Zielbildes.
 
-Untersuchen:
+Frage:
 
-* Abstand zur Primary Dove Axis
-* Abstand zum BodyCenter
-* Lokale Face-Dichte
-* Semantische Begrenzung der Region
+**Welche Wahrnehmungsregel des Flügels beschreibt der Local Wing Space?**
+
+Erst danach beginnt die Implementierung.
+
+---
 
 ## CURRENT_PIPELINE
 
 GLB
+
 ↓
+
 GeometryInspector
+
 ↓
+
 FaceExtractor
+
 ↓
+
 FaceFilter
+
 ↓
+
 Semantic Dove Space
+
 ↓
+
 Primary Dove Axis
+
 ↓
+
 Transition Region
+
+↓
+
+PoC 05 – Local Wing Space (Analyse)
+
+---
 
 ## FILES
 
 * DoveModel.jsx
 * DoveSpaceBuilder.js
 * DebugGesture.jsx
-* DebugNormals.jsx
+
+---
 
 ## DONE
 
@@ -185,23 +207,25 @@ Transition Region
 * FaceFilter
 * Semantic Dove Space
 * Primary Dove Axis
-* Transition Region Debug
-* Face Normal Debug
+* Transition Region
+* Transition Region Quality
+
+---
 
 ## LOCKED
 
-* Local Wing Space
 * Guide Shape
 * Primary Papers
 * Contour Papers
 * Fill Papers
 * PlacementEngine
 
+---
+
 ## SUCCESS_CRITERIA
 
-Die Transition Region bildet den anatomischen Schulterbereich stabil und reproduzierbar ab.
+Der Local Wing Space entsteht aus einer klar definierten Wahrnehmungsregel des Zielbildes.
 
-Erst danach beginnt die Entwicklung des Local Wing Space.
+Er wird erst implementiert, nachdem diese Regel verstanden und als minimaler PoC beschrieben wurde.
 
-27.06.2026
-
+28.06.2026

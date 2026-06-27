@@ -22,6 +22,51 @@ mit Unterstützung von ChatGPT
 
 ## Vision, Prinzipien und Architektur
 
+
+## Künstlerisches Fundament der Engine
+
+Art2all entwickelt seine Engine nicht aus der Anatomie einer Taube.
+
+Auch die vorhandene 3D-Geometrie (GLB) definiert nicht die Architektur der Engine.
+
+Der Ausgangspunkt ist ausschließlich die visuelle Wirkung des finalen Kunstwerks.
+
+Vor jeder neuen Architekturentscheidung und vor jedem neuen Algorithmus wird zuerst analysiert:
+
+**Warum wirkt das finale Bild emotional, harmonisch und sofort als Friedenstaube erkennbar?**
+
+Die Engine entsteht anschließend aus diesen Erkenntnissen.
+
+Nicht die Anatomie bestimmt die Algorithmen.
+
+Nicht die Mesh-Struktur bestimmt die Algorithmen.
+
+Sondern die Wahrnehmung des Menschen.
+
+### Wahrnehmungsprinzipien
+
+Die bisher wichtigsten Erkenntnisse sind:
+
+* Die aufsteigende Gesamtkomposition vermittelt Hoffnung, Aufbruch und Leichtigkeit.
+* Der voluminöse Bauch vermittelt Ruhe, Wärme und Stabilität.
+* Der leicht größere Kopf erzeugt Sympathie und Weichheit.
+* Die Silhouette dominiert die Wahrnehmung stärker als anatomische Details.
+* Anatomisch unwichtige Details (z. B. die Füße) dürfen reduziert oder fehlen, ohne die emotionale Wirkung zu verlieren.
+* Licht, Proportionen, Flächengewichtung und Orientierung bestimmen die Gesamtwirkung stärker als anatomische Perfektion.
+
+### Konsequenz für die Entwicklung
+
+Die Aufgabe unserer Engine besteht nicht darin, eine biologisch korrekte Taube zu beschreiben.
+
+Sie beschreibt die visuellen Prinzipien, die das menschliche Gehirn benötigt, um sofort eine harmonische, positive und lebendige Friedenstaube wahrzunehmen.
+
+Jeder neue PoC und jeder neue Algorithmus muss deshalb zuerst die Frage beantworten:
+
+**Welches Wahrnehmungsprinzip des finalen Kunstwerks wird dadurch beschrieben oder verbessert?**
+
+Erst danach beginnt die technische Umsetzung.
+
+
 ### Warum Art2all existiert
 
 Art2all ist kein gewöhnliches Softwareprojekt.
@@ -207,3 +252,27 @@ Eine Einladung an Kinder, ihre Gedanken zum Frieden zu teilen.
 Eine Einladung an Menschen unterschiedlicher Kulturen, gemeinsam etwas Größeres zu erschaffen.
 
 Und eine Einladung, daran zu glauben, dass aus vielen kleinen Hoffnungen eine gemeinsame Zukunft entstehen kann.
+
+
+PoC 01
+Warum erkennt das Gehirn überhaupt eine Taube?
+
+↓
+
+PoC 02
+Warum wirkt die Gesamtkomposition aufsteigend?
+
+↓
+
+PoC 03
+Warum besitzt die Taube eine globale Hauptachse?
+
+↓
+
+PoC 04
+Warum wirkt der Schulterbereich als Übergang?
+
+↓
+
+PoC 05
+Warum organisiert sich der Flügel als zusammenhängende visuelle Fläche?
