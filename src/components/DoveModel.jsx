@@ -13,6 +13,7 @@ import {
   createLocalWingSpace,
 } from "../utils/DoveSpaceBuilder";
 import { buildWingFingerCurves } from "../utils/WingFingerCurveBuilder";
+import DebugWingCurves from "./DebugWingCurves";
 
 /* -------------------- TAUBE -------------------- */
 export default function DoveModel({ flapRef }) {
@@ -131,7 +132,17 @@ export default function DoveModel({ flapRef }) {
         rightWingTip={primaryAxis.rightWingTip}
         localWingSpace={localWingSpace}
       />
+           
       )}
-    </group>
+        <DebugWingCurves
+          root={[-0.8, 1.2, 0]}
+          side={-1}
+        />
+
+        <DebugWingCurves
+          root={[0.8, 1.2, 0]}
+          side={1}
+        />
+        </group>
   );
 }

@@ -95,140 +95,156 @@ Erst danach wird Code geschrieben.
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 
-# SESSION
 
-Datum
+# SESSION – Sprint 07 (Primary Gesture)
 
-2026-06-28
+## Status
 
-PoC 06 abgeschlossen
-Ergebnis
+Sprint erfolgreich abgeschlossen.
 
-Der ursprünglich angenommene globale Wing Flow Field Ansatz wurde verworfen.
+---
 
-Die Analyse der Zielreferenz zeigt, dass der Flügel visuell nicht durch ein einziges Flow Field organisiert wird.
+# Ziel
 
-Stattdessen entsteht die Organisation hierarchisch.
+Weiterentwicklung der wahrnehmungsbasierten Flügelarchitektur.
 
-Neue Architektur:
+Ausgangspunkt war die Frage, wie sich die innere Organisation des Flügels nicht aus Anatomie oder Mesh, sondern aus der visuellen Wahrnehmung ableiten lässt.
 
-Local Wing Space
-        │
-Wing Root Zone
-        │
+---
+
+# Umgesetzt
+
+✅ Wing Root Zones visualisiert
+
+✅ Wing Finger Curves als Debug implementiert
+
+✅ Fächerstruktur erfolgreich dargestellt
+
+---
+
+# Wichtigste Erkenntnis
+
+Während der Debug-Phase wurde deutlich, dass die Wing Finger Curves nicht den eigentlichen Ursprung des Flügels darstellen.
+
+Ausgehend von eigenen Vogelzeichnungen entstand die Erkenntnis, dass beim Zeichnen zuerst eine einzige übergeordnete Linie entsteht.
+
+Diese Linie bestimmt:
+
+- Haltung
+- Flügelschlag
+- Dynamik
+- Charakter
+
+Erst danach werden Flügel, Volumen und Details aufgebaut.
+
+Diese Linie wurde als **Primary Gesture** definiert.
+
+---
+
+# Neue Wahrnehmungsarchitektur
+
+Primary Gesture
+↓
+Flow Curve
+↓
+Wing Outline
+↓
 Wing Finger Curves
-        │
+↓
 Feather Bands
-        │
-Paper Flow
-        │
+↓
 Paper Placement
 
-Die Wing Finger Curves sind keine anatomischen Finger, sondern abstrakte Leitkurven, welche
+---
 
-Öffnungswinkel
-Länge
-Krümmung
-Silhouette
+# Bedeutung der Ebenen
 
-definieren.
+### Primary Gesture
 
-Die Feather Bands erzeugen anschließend die Breite um diese Kurven.
+Beschreibt die gesamte Bewegung und Haltung des Flügels.
 
-Architekturprinzip
+Sie ist die erste Linie eines künstlerischen Entwurfs.
 
-Der Flügel wird nicht über einzelne Paper oder Faces organisiert.
+---
 
-Die Hierarchie lautet:
+### Flow Curve
 
-Wing Pose
-      │
-Wing Root Zone
-      │
-Wing Finger Curves
-      │
-Feather Bands
-      │
-Paper Flow
-      │
-Paper Placement
+Leitet die Hauptbewegung innerhalb des Flügels.
 
-Jede Ebene folgt ausschließlich ihrer direkten Elternstruktur.
+Sie verbindet Primary Gesture mit der eigentlichen Flügelstruktur.
 
-Everything follows.
+---
 
-Entwicklungsmethodik bestätigt
+### Wing Outline
 
-Die Entwicklung erfolgt konsequent nach folgendem Ablauf:
+Beschreibt ausschließlich die äußere Silhouette.
 
-Target Image
-      │
-Visual Perception
-      │
-Hypothesis
-      │
-Nature Validation
-      │
-Algorithm
-      │
-PoC
-      │
-Implementation
+---
 
-Natürliche Anatomie wird niemals direkt kopiert.
+### Wing Finger Curves
 
-Sie dient ausschließlich dazu, Wahrnehmungshypothesen zu validieren.
+Interne Leitstruktur des Flügels.
 
-Wichtige Erkenntnis
+Sie orientieren sich an Flow Curve und Wing Outline.
 
-Während des ersten WingFingerCurveDebug wurde festgestellt:
+---
 
-Die Curves dürfen nicht aus den Mesh-Faces erzeugt werden.
+### Feather Bands
 
-Der aktuelle Builder analysiert lediglich die vorhandene Geometrie.
+Organisieren die späteren Federfelder.
 
-Für die endgültige Engine muss die Reihenfolge umgekehrt werden.
+---
 
-Richtig:
+### Paper Placement
 
-Wing Root Builder
-        │
-Wing Finger Curve Builder
-        │
-Wing Space Projector
-        │
-Mesh / Faces
+Platzierung der Kinderzeichnungen innerhalb der Feather Bands.
 
-Die Engine erzeugt zuerst ihre semantische Struktur und projiziert diese anschließend auf die Oberfläche.
+---
 
-Nicht umgekehrt.
+# Künstlerische Erkenntnis
 
-Nächster PoC
+Ein Vogel entsteht beim Zeichnen nicht aus Anatomie oder Konturen.
 
-PoC 07
+Der Entwurfsprozess beginnt mit einer Primärgeste.
 
-Wing Root Builder
+Aus dieser entstehen:
+
+- Haltung
+- Dynamik
+- Volumen
+- Flügel
+- Details
+
+Die Art2all-Engine soll zukünftig dieselbe Reihenfolge verwenden.
+
+---
+
+# Zusätzliche Beobachtung
+
+Während der Diskussion wurde festgestellt, dass ähnliche Organisationsprinzipien auch bei Blattadern, Fledermausflügeln und anderen Naturformen auftreten.
+
+Dies wird derzeit **nicht** als Ziel der Entwicklung verstanden, sondern lediglich als offene Hypothese.
+
+Der Fokus des Projekts bleibt weiterhin ausschließlich die Friedenstaube.
+
+---
+
+# Fazit
+
+Sprint erfolgreich abgeschlossen.
+
+Die größte Erkenntnis war keine Implementierung, sondern die Identifikation der **Primary Gesture** als eigentlichen Ausgangspunkt der wahrnehmungsbasierten Flügelarchitektur.
+
+Diese Erkenntnis wird zukünftig als Grundlage für alle weiteren Flügelalgorithmen verwendet.
+
+---
+
+# Nächster Sprint
+
+PoC 08 – Primary Gesture
 
 Ziel:
 
-mathematische Wing Root Zone
-daraus Wing Finger Curves erzeugen
-noch ohne Feather Bands
-noch ohne Paper
-noch ohne Projektion auf das Mesh
-
-Erst wenn diese Struktur visuell überzeugt, beginnt die Projektion auf die Flügeloberfläche.
-
-Fazit
-
-Der heutige Fortschritt bestand nicht in neuem Rendering, sondern in einer wesentlichen Architekturentscheidung.
-
-Die Engine entwickelt sich von einer meshgetriebenen Pipeline zu einer wahrnehmungsgetriebenen, hierarchischen Organisationsstruktur.
-
-Der Fokus bleibt unverändert:
-
-MI + KI = Art2all
-
-Menschliche Wahrnehmung führt.
-
-Der Algorithmus folgt.
+- Primary Gesture als Debug visualisieren
+- Flow Curve daraus ableiten
+- Wing Finger Curves erstmals an Primary Gesture und Flow Curve ausrichten
