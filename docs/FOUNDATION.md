@@ -348,3 +348,61 @@ Das Wing Finger Skeleton ist keine anatomische Nachbildung eines Vogels, sondern
 Jede Feather Band ist einem Wing Finger zugeordnet und übernimmt dessen Orientierung, Krümmung und Spreizwinkel. Die einzelnen Paper werden nicht unabhängig animiert, sondern folgen ihrer Feather Band.
 
 Dadurch entstehen Flügelbewegung, Silhouette, Überlappung und Paper-Orientierung aus derselben hierarchischen Struktur.
+
+Die Natur wird nicht kopiert, sondern analysiert.
+
+Anatomische Strukturen dienen ausschließlich dazu, funktionale Prinzipien zu verstehen. Die Engine reproduziert die visuelle Wahrnehmung des Zielbildes, nicht die Anatomie des Vogels.
+
+Art2all Engineering Principle
+
+Architekturentscheidungen entstehen aus der Wahrnehmung des Zielbildes. Natürliche Systeme werden anschließend als funktionale Referenz herangezogen, um die Hypothesen zu überprüfen und zu verfeinern. Ziel ist nicht die Nachbildung biologischer Anatomie, sondern die Übertragung ihrer Organisationsprinzipien auf eine eigene, wahrnehmungsorientierte Engine.
+
+
+1. Art2all-Entwicklungsmethodik
+ - Target Image → Visual Perception → Hypothesis → Nature Validation → Algorithm → PoC → Implementation
+ - Die Natur dient zur Validierung von Hypothesen, nicht als Vorlage zum Nachbauen.
+2. Architektur-Hypothese
+- Hierarchischer Aufbau des Flügels:
+  - Local Wing Space
+  - Wing Finger Skeleton (funktionale Abstraktion, keine Anatomie)
+  - Feather Bands
+  - Paper Flow
+  - Paper Placement
+
+  Everything follows
+
+Kein Element der Engine bewegt sich unabhängig.
+
+Jede Ebene folgt ausschließlich ihrer direkten Elternstruktur.
+
+Dadurch entstehen alle sichtbaren Veränderungen aus wenigen semantischen Transformationen.
+
+Das ist unsere komplette Architektur in einem Satz.
+
+Beispiele:
+
+Dove State
+      ↓
+Wing Pose
+      ↓
+Wing Finger Curves
+      ↓
+Feather Bands
+      ↓
+Paper Flow
+      ↓
+Paper Placement
+
+Kein Paper entscheidet selbst etwas.
+
+Es folgt.
+
+Keine Feather Band entscheidet selbst etwas.
+
+Sie folgt.
+
+Vielleicht in einer eingerückten Box:
+
+Everything follows.
+
+Die visuelle Komplexität entsteht nicht durch unabhängige Einzelobjekte, sondern durch eine Hierarchie semantischer Beziehungen. Jede Ebene folgt ausschließlich ihrer Elternstruktur. Aus diesen wenigen Transformationen entsteht die gesamte Bewegung, Form und Lebendigkeit der Friedenstaube.

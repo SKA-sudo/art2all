@@ -97,26 +97,138 @@ Erst danach wird Code geschrieben.
 
 # SESSION
 
-PoC 06 – Ergebnis
+Datum
 
-✔ Feather Bands sind die primäre visuelle Organisation des Flügels.
+2026-06-28
 
-Neue Architektur-Hypothese:
+PoC 06 abgeschlossen
+Ergebnis
 
-Wing Finger Skeleton
+Der ursprünglich angenommene globale Wing Flow Field Ansatz wurde verworfen.
+
+Die Analyse der Zielreferenz zeigt, dass der Flügel visuell nicht durch ein einziges Flow Field organisiert wird.
+
+Stattdessen entsteht die Organisation hierarchisch.
+
+Neue Architektur:
 
 Local Wing Space
         │
-        ▼
-Wing Finger Skeleton
+Wing Root Zone
         │
-        ▼
+Wing Finger Curves
+        │
 Feather Bands
         │
-        ▼
 Paper Flow
         │
-        ▼
 Paper Placement
 
-Die Feather Bands folgen nicht direkt einem globalen Flow Field, sondern werden durch wenige semantische Wing Fingers organisiert, die sich wie die Finger einer Hand spreizen und schließen können. Dieses Modell soll im nächsten PoC validiert werden.
+Die Wing Finger Curves sind keine anatomischen Finger, sondern abstrakte Leitkurven, welche
+
+Öffnungswinkel
+Länge
+Krümmung
+Silhouette
+
+definieren.
+
+Die Feather Bands erzeugen anschließend die Breite um diese Kurven.
+
+Architekturprinzip
+
+Der Flügel wird nicht über einzelne Paper oder Faces organisiert.
+
+Die Hierarchie lautet:
+
+Wing Pose
+      │
+Wing Root Zone
+      │
+Wing Finger Curves
+      │
+Feather Bands
+      │
+Paper Flow
+      │
+Paper Placement
+
+Jede Ebene folgt ausschließlich ihrer direkten Elternstruktur.
+
+Everything follows.
+
+Entwicklungsmethodik bestätigt
+
+Die Entwicklung erfolgt konsequent nach folgendem Ablauf:
+
+Target Image
+      │
+Visual Perception
+      │
+Hypothesis
+      │
+Nature Validation
+      │
+Algorithm
+      │
+PoC
+      │
+Implementation
+
+Natürliche Anatomie wird niemals direkt kopiert.
+
+Sie dient ausschließlich dazu, Wahrnehmungshypothesen zu validieren.
+
+Wichtige Erkenntnis
+
+Während des ersten WingFingerCurveDebug wurde festgestellt:
+
+Die Curves dürfen nicht aus den Mesh-Faces erzeugt werden.
+
+Der aktuelle Builder analysiert lediglich die vorhandene Geometrie.
+
+Für die endgültige Engine muss die Reihenfolge umgekehrt werden.
+
+Richtig:
+
+Wing Root Builder
+        │
+Wing Finger Curve Builder
+        │
+Wing Space Projector
+        │
+Mesh / Faces
+
+Die Engine erzeugt zuerst ihre semantische Struktur und projiziert diese anschließend auf die Oberfläche.
+
+Nicht umgekehrt.
+
+Nächster PoC
+
+PoC 07
+
+Wing Root Builder
+
+Ziel:
+
+mathematische Wing Root Zone
+daraus Wing Finger Curves erzeugen
+noch ohne Feather Bands
+noch ohne Paper
+noch ohne Projektion auf das Mesh
+
+Erst wenn diese Struktur visuell überzeugt, beginnt die Projektion auf die Flügeloberfläche.
+
+Fazit
+
+Der heutige Fortschritt bestand nicht in neuem Rendering, sondern in einer wesentlichen Architekturentscheidung.
+
+Die Engine entwickelt sich von einer meshgetriebenen Pipeline zu einer wahrnehmungsgetriebenen, hierarchischen Organisationsstruktur.
+
+Der Fokus bleibt unverändert:
+
+MI + KI = Art2all
+
+Menschliche Wahrnehmung führt.
+
+Der Algorithmus folgt.

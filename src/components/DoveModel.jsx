@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import DoveSurface from "./DoveSurface";
 import DebugGesture from "./DebugGesture";
+import { WingFingerCurvesDebug } from "./debug/WingFingerCurvesDebug.jsx";
 
 import { inspectGeometry } from "../utils/GeometryInspector";
 import { extractFaces } from "../utils/FaceExtractor";
@@ -11,6 +12,7 @@ import {
   findPrimaryDoveAxis,
   createLocalWingSpace,
 } from "../utils/DoveSpaceBuilder";
+import { buildWingFingerCurves } from "../utils/WingFingerCurveBuilder";
 
 /* -------------------- TAUBE -------------------- */
 export default function DoveModel({ flapRef }) {
@@ -61,6 +63,17 @@ export default function DoveModel({ flapRef }) {
   const primaryAxis = engineData?.primaryAxis ?? null;
   const localWingSpace = engineData?.localWingSpace ?? null;
 
+  const leftWingFingerCurves = useMemo(() => {
+      if (!localWingSpace || !primaryAxis?.leftShoulder) return [];
+
+      return buildWingFingerCurves({
+        localWingSpace,
+        shoulder: primaryAxis.leftShoulder,
+        side: "left",
+        count: 5,
+      });
+    }, [localWingSpace, primaryAxis]);
+
   const primaryAxisPoints = useMemo(() => {
     if (!primaryAxis) return null;
 
@@ -103,6 +116,7 @@ export default function DoveModel({ flapRef }) {
   return (
     <group ref={group} scale={20} position={[0, 6, 0]}>
       <primitive object={scene} />
+      <WingFingerCurvesDebug curves={leftWingFingerCurves} />
       <DoveSurface mesh={mesh} />
 
       {primaryAxisPoints && primaryAxis && (

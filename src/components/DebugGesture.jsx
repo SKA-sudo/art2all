@@ -107,19 +107,16 @@ export default function DebugGesture({
         );
       })}
 
-      {/* Local Wing Space Debug - Flow Only */}
-{localWingDebugItems
-  .filter((_, index) => index % 4 === 0) // weniger Linien
-  .map((item) => (
-    <group key={item.key} position={item.center}>
-      <line geometry={item.flowGeometry}>
-        <lineBasicMaterial
-          color="lime"
-          linewidth={3}
-        />
-      </line>
-    </group>
-))}
+    {/* Local Wing Space Debug - Flow Only */}
+    {localWingDebugItems
+      .filter((_, index) => index % 4 === 0)
+      .map((item) => (
+        <group key={item.key} position={item.center}>
+          <line geometry={item.flowGeometry}>
+            <lineBasicMaterial color="lime" />
+          </line>
+        </group>
+      ))}
     </>
   );
 }
