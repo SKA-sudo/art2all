@@ -276,3 +276,59 @@ Warum wirkt der Schulterbereich als Übergang?
 
 PoC 05
 Warum organisiert sich der Flügel als zusammenhängende visuelle Fläche?
+
+# Wahrnehmungsregeln
+1. Raster vor Feder
+ - Das Gehirn erkennt zuerst eine zusammenhängende Fläche.
+ - Die Federwirkung entsteht erst als Folge des Rasters.
+2. Unregelmäßige Trapezflächen
+ - Die Papierflächen bilden kein regelmäßiges Rechteckraster.
+ - Sie sind unterschiedlich groß, leicht versetzt und leicht          gegeneinander verdreht.
+ - Dadurch entsteht eine organische statt technische Wirkung.
+3. Überlagerungsdichte
+ - Im Flügelinneren überlagern sich viele Papierflächen.
+ - Dadurch entsteht eine geschlossene weiße Fläche.
+ - Zur Flügelkante nimmt die Überlagerung kontinuierlich ab.
+4. Federwirkung als Folge
+ - Die äußeren Papierlagen öffnen sich nach außen.
+ - Es entstehen kaum radiale Muster.
+ - Die Federwirkung entsteht durch geringere Überdeckung und die sichtbaren Blattkanten.
+5. Plastizität
+ - Die räumliche Wirkung entsteht hauptsächlich durch die Wölbung der Oberfläche.
+ - Das Raster selbst ist nahezu zweidimensional.
+ - Die Geometrie trägt die Form, das Raster trägt die Wahrnehmung.
+
+ Neue Wahrnehmungsregel
+Flügel als visuelle Fläche
+
+Der Flügel wird vom menschlichen Gehirn nicht als Sammlung einzelner Papierflächen wahrgenommen.
+
+Die primäre Wahrnehmung ist eine zusammenhängende Fläche.
+
+Diese Fläche entsteht durch die Organisation eines unregelmäßigen Rasters aus überlappenden Papierflächen.
+
+Die Federwirkung ist nicht die Ursache dieser Wahrnehmung, sondern ihre Folge.
+
+Raster vor Feder
+
+Die Art2all-Engine beschreibt den Flügel nicht als biologisches Federsystem.
+
+Sie beschreibt die Organisationsregeln eines visuellen Rasters.
+
+Dieses Raster erzeugt beim Betrachter den Eindruck eines Flügels.
+
+Plastizität
+
+Die räumliche Wirkung entsteht hauptsächlich durch die Geometrie der Oberfläche.
+
+Das Raster selbst bleibt weitgehend zweidimensional.
+
+Die Wölbung der Oberfläche erzeugt die plastische Wirkung.
+
+Größenprogression
+
+Die Papierflächen besitzen keine einheitliche Größe.
+
+Sie wachsen kontinuierlich von innen nach außen.
+
+Diese Größenprogression trägt wesentlich dazu bei, dass das Gehirn die Fläche als Flügel interpretiert.

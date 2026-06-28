@@ -9,8 +9,6 @@ Lies zuerst vollständig:
 
 Diese Dokumente haben Vorrang vor allen neuen Ideen.
 
-Hallo CHATGPT Wir machen ein supercooles Projekt
-
 
 ---
 
@@ -101,117 +99,35 @@ Erst danach wird Code geschrieben.
 
 CURRENT_TASK
 
-PoC 06 – Wing Flow Field (Analyse)
-
-STATUS
-
-✅ GeometryInspector abgeschlossen.
-
-✅ FaceExtractor abgeschlossen.
-
-✅ FaceFilter abgeschlossen.
-
-✅ Semantic Dove Space abgeschlossen.
-
-✅ Primary Dove Axis abgeschlossen.
-
-✅ Transition Region abgeschlossen.
-
-✅ Transition Region Quality abgeschlossen.
-
-✅ PoC 05 – Local Wing Space abgeschlossen.
+PoC 06 – Wing Surface Grid
 
 WICHTIGSTE ERKENNTNIS
 
-PoC 05 konnte erfolgreich validieren, dass jede Face eine lokale Orientierung besitzt und der Datenfluss der Engine korrekt funktioniert.
+Die Analyse des Zielbildes zeigte, dass der Flügel nicht primär durch Flow-Linien oder Federrotation organisiert wird.
 
-Die Debug-Visualisierung zeigte jedoch eine entscheidende Wahrnehmung:
+Die visuelle Wirkung entsteht durch ein unregelmäßiges Raster aus überlappenden Papierflächen.
 
-Der Flügel wird vom Betrachter nicht als einzelne Achse wahrgenommen.
+Wesentliche Wahrnehmungsmerkmale:
 
-Stattdessen entsteht der visuelle Eindruck eines zusammenhängenden Strömungsfeldes.
-
-Der bisherige Local Wing Space beschreibt lediglich lokale Richtungen.
-
-Er beschreibt noch nicht die gemeinsame Organisation des gesamten Flügels.
-
+hohe Überlagerungsdichte im Flügelinneren,
+kontinuierlich abnehmende Dichte zur Flügelkante,
+kontinuierliche Größenzunahme der Papierflächen von innen nach außen,
+Federwirkung entsteht erst an der äußeren Flügelkante,
+die räumliche Wirkung wird hauptsächlich durch die Oberflächenwölbung erzeugt.
 CURRENT_HYPOTHESIS
 
-Der nächste Schritt besteht nicht darin, den Local Wing Space weiter zu verfeinern.
+Vor einem Wing Flow Field muss zunächst das Wing Surface Grid verstanden werden.
 
-Stattdessen muss untersucht werden, wie ein kontinuierliches Wing Flow Field beschrieben werden kann.
+Das Raster bildet die Organisationsstruktur des Flügels.
 
-Dieses Flow Field soll die visuelle Organisation der Papierflächen bestimmen.
-
-Jede Face erhält ihre Richtung aus diesem gemeinsamen Feld und nicht ausschließlich aus einer lokalen Achse.
+Flow, Orientierung und Papierrotation werden später aus diesem Raster abgeleitet.
 
 NEXT_ACTION
 
-Analyse des kanonischen Zielbildes.
+Analyse der Wachstumsregel des Wing Surface Grid.
 
 Frage:
 
-Welche Wahrnehmungsregel beschreibt das kontinuierliche Strömungsfeld eines Flügels?
+Nach welchen Wahrnehmungsregeln wachsen Rasterdichte, Papiergröße und Überlagerung vom Flügelinneren zur Flügelkante?
 
-Erst danach wird ein Algorithmus entwickelt.
-
-CURRENT_PIPELINE
-
-GLB
-
-↓
-
-GeometryInspector
-
-↓
-
-FaceExtractor
-
-↓
-
-FaceFilter
-
-↓
-
-Semantic Dove Space
-
-↓
-
-Primary Dove Axis
-
-↓
-
-Transition Region
-
-↓
-
-Local Wing Space
-
-↓
-
-PoC 06 – Wing Flow Field (Analyse)
-
-FILES
-DoveModel.jsx
-DoveSpaceBuilder.js
-DebugGesture.jsx
-DONE
-GeometryInspector
-FaceExtractor
-FaceFilter
-Semantic Dove Space
-Primary Dove Axis
-Transition Region
-Transition Region Quality
-Local Wing Space
-LOCKED
-Guide Shape
-Primary Papers
-Contour Papers
-Fill Papers
-PlacementEngine
-SUCCESS_CRITERIA
-
-Das Wing Flow Field beschreibt die visuelle Strömung des gesamten Flügels als kontinuierliches Wahrnehmungsfeld.
-
-Es entsteht aus der Analyse des Zielbildes und wird erst nach erfolgreicher Wahrnehmungsvalidierung implementiert.
+Erst danach wird ein minimaler Algorithmus beschrieben.
