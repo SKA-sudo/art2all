@@ -9,116 +9,167 @@ Lies zuerst vollständig:
 
 Diese Dokumente haben Vorrang vor allen neuen Ideen.
 
+GLB als Lernmodell.
+Beziehungsregeln daraus ableiten.
+Prüfen, ob dieselbe Wahrnehmung ohne GLB entsteht.
+Wir brauchen also drei Ebenen:
 
+1. Grundraster
+   = räumlicher Orientierungsraum
+
+2. Beziehungsnetz
+   = Kinderbilder beeinflussen sich gegenseitig
+
+3. Wahrnehmung
+   = daraus erscheint die Taube
 ---
 
-# SESSION – Sprint 09 (Architektur)
+Sprint
 
-## Ziel
+PoC 09 – GDL Space Grid (Start)
 
-Überprüfung eines alternativen wahrnehmungsbasierten Lösungsansatzes für die Art2all-Engine.
+Ziel des Sprints
 
----
+Zurück zu den Grundlagen.
 
-## Wichtigste Erkenntnis
+Nicht die fertige Taube analysieren, sondern das technische Ausgangsmodell sichtbar machen und daraus schrittweise ein minimales GDL entwickeln.
 
-Während der Diskussion wurde die bisherige Architektur grundlegend hinterfragt.
+Die zentrale Fragestellung lautet:
 
-Der Fokus verschob sich von der Konstruktion einzelner Strukturen (Flow Curves, Feather Bands usw.) hin zu einer deutlich einfacheren Grundidee.
+Wie wenig räumliche Information benötigen wir, damit die Flügelform bzw. die Taube noch eindeutig wahrgenommen wird?
 
-Die Engine soll nicht möglichst viele Strukturen erzeugen.
+Umgesetzte Arbeiten
+Analysemodus erstellt
 
-Sie soll möglichst wenige grundlegende Regeln besitzen, aus denen komplexe Strukturen entstehen.
+Für die Analyse wurde das normale Rendering deaktiviert.
 
----
+Aktiv:
 
-## Architekturwechsel
+Wireframe-GLB
+Technische Kamera
 
-Bisherige Annahme:
+Deaktiviert:
 
-* Linien werden konstruiert.
-* Kinderzeichnungen werden entlang dieser Linien platziert.
+DoveSurface
+PrimaryGestureDebug
+WingFingerCurvesDebug
+GestureTreeDebug
+weitere Debug-Hilfen
 
-Neue Arbeitshypothese:
+Dadurch steht erstmals das technische Modell selbst im Mittelpunkt.
 
-* Die Engine organisiert Beziehungen zwischen den Kinderzeichnungen.
-* Aus diesen Beziehungen entstehen für die menschliche Wahrnehmung Linien, Flügel, Federstrukturen und schließlich die Friedenstaube.
+GDLBuilder
 
-Die wahrgenommenen Linien sind somit kein Eingabedatum der Engine, sondern ein emergentes Ergebnis.
+Der vorhandene Code wurde erstmals zu einem gemeinsamen GDLBuilder zusammengeführt.
 
----
+Aktuelle Bestandteile:
 
-## Gleichgewicht statt Platzierung
+Primary Axis
+Local Wing Space
+Primary Gestures
+Wing Finger Curves
 
-Ein neues Kinderbild erhält nicht lediglich einen freien Platz.
+Diese Builder existieren bereits und wurden erstmals in einer gemeinsamen Datenstruktur zusammengeführt.
 
-Jedes neue Kinderbild verändert das Gleichgewicht der gesamten Komposition.
+GDLDebug
 
-Die Engine organisiert deshalb nicht einzelne Positionen, sondern hält die gesamte Friedenstaube in einem harmonischen Gleichgewicht.
+Ein neuer zentraler Debug-Layer wurde aufgebaut.
 
----
+Ziel:
 
-## Wachstum
+einzelne Builder unabhängig voneinander ein- und ausschalten
+keine Vermischung verschiedener Debug-Ausgaben
+Grundlage für zukünftige Analyse
+Debug-Konfiguration
 
-Die Engine besitzt von Beginn an dieselben Regeln.
+Ein zentraler Debug-Schalter wurde eingeführt.
 
-Nicht die Engine entwickelt sich.
+Dadurch können einzelne Ebenen unabhängig aktiviert werden.
 
-Die Friedenstaube entwickelt sich.
+Dies bildet die Grundlage für zukünftige technische Analysen.
 
-Mit zunehmender Anzahl von Kinderzeichnungen wachsen:
+SpaceGridDebug
 
-* Organisationsdichte
-* Detailtiefe
-* lokale Struktur
-* visuelle Komplexität
+Erster Versuch eines unabhängigen Raumgitters.
 
-Die grundlegende Wahrnehmungsstruktur bleibt dabei erhalten.
+Ergebnis:
 
----
+einzelne Linie sichtbar
+mehrere Linien wurden nicht korrekt dargestellt
 
-## Harmonisierung
+Vermutung:
 
-Bei wenigen Kinderzeichnungen übernimmt die Engine einen größeren Anteil der Formbildung.
+Die verwendete drei/drei-Komponente Line eignet sich nicht für das geplante Raumgitter.
 
-Mathematische Harmonisierung sorgt dafür, dass bereits mit wenigen Beiträgen eine organische und friedliche Taube entsteht.
+Nächster Versuch:
 
-Mit zunehmender Anzahl der Kinderzeichnungen reduziert sich diese Harmonisierung kontinuierlich.
+Implementierung des Raumgitters mit THREE.LineSegments bzw. BufferGeometry.
 
-Die Gesamtform entsteht immer stärker aus den Beziehungen der Kinderzeichnungen selbst.
+Wichtigste Erkenntnis des Tages
 
----
+Nicht die Technik war der wichtigste Fortschritt.
 
-## Einfachheitsprinzip
+Der wichtigste Fortschritt war die Erkenntnis über den Entwicklungsprozess.
 
-Eine zentrale Erkenntnis des Tages wurde als neues Architekturprinzip aufgenommen.
+Art2all befindet sich nicht mehr in der Ideenphase.
 
-> Der Irrtum besteht oft darin, Systeme immer komplexer zu machen.
->
-> Aus der Einfachheit kann hohe Komplexität entstehen – nicht umgekehrt.
+Die Architektur ist beschlossen.
 
-Dieses Prinzip wird zukünftig als Leitgedanke für alle Architekturentscheidungen verwendet.
+Ab jetzt gilt:
 
----
+Die Architektur ist beschlossen. Ich implementiere sie jetzt.
 
-## Projektfokus
+Während eines Sprints werden keine neuen Architekturen entwickelt.
 
-Trotz der neuen langfristigen Perspektive bleibt der unmittelbare Fokus unverändert.
+Neue Ideen werden ausschließlich gesammelt und erst nach Abschluss des aktuellen Sprints bewertet.
 
-Zuerst wird die Friedenstaube vollständig verstanden und die neue Architektur an ihr validiert.
+Neuer Arbeitsmodus
 
-Erst nach erfolgreicher Validierung wird geprüft, ob sich dieselben Prinzipien auf andere natürliche Objekte übertragen lassen.
+Vision und Build werden strikt getrennt.
 
----
+Vision
+Forschung
+Wahrnehmung
+Architektur
+wissenschaftliche Ansätze
 
-## Nächster Sprint
+Ergebnis:
+Entscheidung.
 
-PoC 09
+Danach wird die Architektur eingefroren.
 
-Untersuchung einer beziehungsbasierten Komposition.
+Build
 
-Fragestellung:
+Während eines Sprints:
 
-> Welche einfachen Beziehungsregeln zwischen Kinderzeichnungen reichen aus, damit das menschliche Gehirn eine harmonische Friedenstaube wahrnimmt?
+keine neuen Builder
+keine neue Architektur
+keine Richtungswechsel
 
-Der Fokus liegt weiterhin ausschließlich auf der Friedenstaube.
+Arbeitsweise:
+
+Eine Aufgabe.
+
+Eine Datei.
+
+Ein sichtbares Ergebnis.
+
+Dann Commit.
+
+Nächster Sprint
+
+SpaceGridDebug fertigstellen.
+
+Nicht das GDL reduzieren.
+
+Nicht neue Builder entwickeln.
+
+Zuerst das vollständige technische Raumgitter sichtbar machen.
+
+Danach beginnt die eigentliche Analyse:
+
+Raumgitter schrittweise reduzieren und nach jedem Schritt prüfen:
+
+Ist die Flügelform bzw. die Taube noch eindeutig wahrnehmbar?
+
+Erst danach folgen weitere Ebenen wie Beziehungsnetz, Verformung und Wahrnehmungsalgorithmen.

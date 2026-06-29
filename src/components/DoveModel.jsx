@@ -18,12 +18,32 @@ import { buildPrimaryGestures } from "../utils/PrimaryGestureBuilder";
 import { PrimaryGestureDebug } from "./debug/PrimaryGestureDebug.jsx";
 import { buildGestureTreeDebug } from "../utils/GestureTreeBuilder";
 import { GestureTreeDebug } from "./debug/GestureTreeDebug.jsx";
+import { buildGDL } from "../core/GDLBuilder";
+import GDLDebug from "./debug/GDLDebug";
+import * as THREE from "three";
+import SpaceGridDebug from "./debug/SpaceGridDebug";
 
 /* -------------------- TAUBE -------------------- */
 export default function DoveModel({ flapRef }) {
   const group = useRef();
   const { scene, animations } = useGLTF("/models/peace_dove.glb");
+const technicalScene = useMemo(() => {
+  
+  const clone = scene.clone(true);
 
+  clone.traverse((child) => {
+    if (!child.isMesh) return;
+
+    child.material = new THREE.MeshBasicMaterial({
+      color: "white",
+      wireframe: true,
+      transparent: true,
+      opacity: 0.75,
+    });
+  });
+
+  return clone;
+}, [scene]);
   const mesh = useMemo(() => {
     let found = null;
 
@@ -95,6 +115,20 @@ const gestureTreeFlowCurves = useMemo(() => {
       });
     }, [localWingSpace, primaryAxis]);
 
+    const gdl = useMemo(() => {
+      return buildGDL({
+        primaryAxis,
+        localWingSpace,
+        primaryGestures,
+        wingFingerCurves: leftWingFingerCurves,
+      });
+    }, [
+      primaryAxis,
+      localWingSpace,
+      primaryGestures,
+      leftWingFingerCurves,
+    ]);
+
   const primaryAxisPoints = useMemo(() => {
     if (!primaryAxis) return null;
 
@@ -135,15 +169,18 @@ const gestureTreeFlowCurves = useMemo(() => {
   });
 
   return (
-    <group ref={group} scale={20} position={[0, 6, 0]}>
-      <primitive object={scene} />
+    <group ref={group} scale={28} position={[0, 6, 0]}>
+      <primitive object={technicalScene} />
+      <SpaceGridDebug />
+      {/*<primitive object={scene} />
+      <GDLDebug gdl={gdl} />
       <PrimaryGestureDebug gestures={primaryGestures} />
-      {/*<GestureTreeDebug flowCurves={gestureTreeFlowCurves} />
-      <WingFingerCurvesDebug curves={leftWingFingerCurves} />*/}
-      <DoveSurface mesh={mesh} />
+      <GestureTreeDebug flowCurves={gestureTreeFlowCurves} />
+      <WingFingerCurvesDebug curves={leftWingFingerCurves} />
+      <DoveSurface mesh={mesh} />*/}
       
     
-       {primaryAxisPoints && primaryAxis && (
+       {/*{primaryAxisPoints && primaryAxis && (
         <DebugGesture
         points={primaryAxisPoints}
         colors={["red", "orange", "white", "cyan", "blue"]}
@@ -165,7 +202,7 @@ const gestureTreeFlowCurves = useMemo(() => {
         <DebugWingCurves
           root={[0.8, 1.2, 0]}
           side={1}
-        />
+        />*/}
         </group>
   );
 }

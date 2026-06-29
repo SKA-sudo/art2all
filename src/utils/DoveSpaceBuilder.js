@@ -3,17 +3,10 @@ import * as THREE from "three";
 export function findPrimaryDoveAxis(faces) {
   if (!faces || faces.length === 0) return null;
 
-  const leftWingTip = faces.reduce((best, face) =>
-    face.center.x < best.center.x ? face : best
-  );
+  const leftWingTip = findLeftWingTip(faces);
+  const rightWingTip = findRightWingTip(faces);
 
-  const rightWingTip = faces.reduce((best, face) =>
-    face.center.x > best.center.x ? face : best
-  );
-
-  const bodyCenter = faces.reduce((best, face) =>
-    Math.abs(face.center.x) < Math.abs(best.center.x) ? face : best
-  );
+  const bodyCenter = findBodyCenter(faces);
 
   const leftTransition = findTransitionZonePoint(
     faces,
@@ -21,8 +14,68 @@ export function findPrimaryDoveAxis(faces) {
     leftWingTip,
     "left"
   );
+  function findBodyCenter(faces) {
+    const center = new THREE.Vector3();
 
-  const rightTransition = findTransitionZonePoint(
+    faces.forEach((face) => {
+      center.add(face.center);
+    });
+
+    center.divideScalar(faces.length);
+
+    return faces.reduce((best, face) =>
+      face.center.distanceTo(center) < best.center.distanceTo(center)
+        ? face
+        : best
+    );
+}
+
+function findLeftWingTip(faces) {
+  return findFunctionalWingTip(faces, "left");
+}
+
+function findRightWingTip(faces) {
+  return findFunctionalWingTip(faces, "right");
+}
+
+function findFunctionalWingTip(faces, side) {
+  const bodyCenter = findBodyCenter(faces).center;
+
+  const sideFaces = faces.filter((face) =>
+    side === "left"
+      ? face.center.x < bodyCenter.x
+      : face.center.x > bodyCenter.x
+  );
+
+  if (!sideFaces.length) {
+    return side === "left"
+      ? faces.reduce((best, face) => (face.center.x < best.center.x ? face : best))
+      : faces.reduce((best, face) => (face.center.x > best.center.x ? face : best));
+  }
+
+  return sideFaces.reduce((best, face) => {
+    const bestScore = wingTipScore(best, bodyCenter, side);
+    const score = wingTipScore(face, bodyCenter, side);
+
+    return score > bestScore ? face : best;
+  });
+}
+
+    function wingTipScore(face, bodyCenter, side) {
+      const dx = face.center.x - bodyCenter.x;
+      const dy = face.center.y - bodyCenter.y;
+
+      const outward =
+        side === "left"
+          ? Math.max(0, -dx)
+          : Math.max(0, dx);
+
+      const heightBonus = Math.max(0, dy) * 0.35;
+      const centerPenalty = Math.abs(face.center.z - bodyCenter.z) * 0.15;
+
+      return outward + heightBonus - centerPenalty;
+    }
+const rightTransition = findTransitionZonePoint(
     faces,
     bodyCenter,
     rightWingTip,
