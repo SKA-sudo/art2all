@@ -25,6 +25,9 @@ mit Unterstützung von ChatGPT
 
 ## Künstlerisches Fundament der Engine
 
+
+"Der Irrtum ist oft, dass man es sich zu kompliziert macht. Aus der Einfachheit kann hohe Komplexität entstehen – nicht umgekehrt."
+
 Art2all entwickelt seine Engine nicht aus der Anatomie einer Taube.
 
 Auch die vorhandene 3D-Geometrie (GLB) definiert nicht die Architektur der Engine.
@@ -408,3 +411,68 @@ Everything follows.
 Die visuelle Komplexität entsteht nicht durch unabhängige Einzelobjekte, sondern durch eine Hierarchie semantischer Beziehungen. Jede Ebene folgt ausschließlich ihrer Elternstruktur. Aus diesen wenigen Transformationen entsteht die gesamte Bewegung, Form und Lebendigkeit der Friedenstaube.
 
 Art2all modelliert nicht primär Objekte. Art2all modelliert die minimale visuelle Information, die das menschliche Gehirn benötigt, um ein Objekt zu erkennen. Die Engine beschreibt daher nicht Anatomie, sondern Wahrnehmung und deren Aktivierung im visuellen Gedächtnis.
+
+
+# Prinzip der Einfachheit
+
+## Architekturprinzip
+
+Der häufigste Fehler bei der Entwicklung komplexer Systeme besteht darin, Komplexität direkt konstruieren zu wollen.
+
+Art2all folgt dem entgegengesetzten Ansatz.
+
+> **Aus der Einfachheit kann hohe Komplexität entstehen.**
+>
+> **Komplexität selbst erzeugt jedoch keine Einfachheit.**
+
+Die Aufgabe der Engine besteht deshalb nicht darin, möglichst viele Regeln zu definieren.
+
+Ihre Aufgabe besteht darin, die wenigen fundamentalen Regeln zu finden, aus denen die gewünschte Wahrnehmung, Organisation und Vielfalt von selbst entstehen.
+
+Die Friedenstaube ist kein statisches 3D-Modell.
+Sie ist ein dynamisches Gleichgewicht aus den Beziehungen aller Kinderzeichnungen.
+
+Wir entwickeln eine Engine, die Wahrnehmung aus Beziehungen entstehen lässt.
+
+Die Qualität einer Architektur misst sich nicht daran, wie viel sie beschreibt, sondern daran, wie viel sie mit möglichst wenigen Regeln entstehen lässt.
+
+---
+
+## Konsequenzen
+
+Jede neue Regel muss sich rechtfertigen.
+
+Vor jeder Erweiterung wird gefragt:
+
+* Kann dieses Verhalten aus einer einfacheren Regel entstehen?
+* Ist diese Regel universell?
+* Vereinfacht sie die Architektur?
+* Entsteht daraus mehr Komplexität als wir hineingeben?
+
+Kann eine dieser Fragen mit **Ja** beantwortet werden, besitzt die einfachere Regel Vorrang.
+
+---
+
+## Anwendung auf Art2all
+
+Die Friedenstaube wird nicht durch eine Vielzahl einzelner Spezialalgorithmen aufgebaut.
+
+Sie entsteht aus wenigen grundlegenden Prinzipien:
+
+* Wahrnehmung vor Technik.
+* Beziehungen vor Objekten.
+* Gleichgewicht vor Platzierung.
+* Wachstum statt Rekonstruktion.
+* Emergenz statt Konstruktion.
+
+Alle weiteren Strukturen der Engine sollen aus diesen wenigen Grundprinzipien hervorgehen.
+
+---
+
+## Leitfrage
+
+Bei jeder zukünftigen Architekturentscheidung wird zuerst gefragt:
+
+> **Welche einfachere Regel könnte dieses Verhalten entstehen lassen, anstatt es direkt zu programmieren?**
+
+Erst wenn keine einfachere Erklärung gefunden wird, darf eine neue Regel eingeführt werden.
