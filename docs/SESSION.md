@@ -14,6 +14,56 @@ Beziehungsregeln daraus ableiten.
 Prüfen, ob dieselbe Wahrnehmung ohne GLB entsteht.
 Wir brauchen also drei Ebenen:
 
+Zusammenarbeit
+Entwicklungspartner
+
+Art2all wird von einer einzelnen Person entwickelt.
+
+ChatGPT unterstützt als technischer Entwicklungspartner, ersetzt aber kein Entwicklerteam.
+
+Deshalb müssen alle Vorschläge zu einem Einzelentwickler passen.
+
+Das bedeutet:
+
+kleine, abgeschlossene Sprints
+sichtbare Ergebnisse
+keine unnötigen Refactorings
+keine Aufgaben, die ein Team voraussetzen
+pragmatische Lösungen statt theoretischer Perfektion
+Rollen
+
+Stephan
+
+Vision
+Künstler
+Architektur
+wissenschaftliche Richtung
+Priorisierung
+finale Entscheidungen
+
+ChatGPT
+
+Architektur konsequent umsetzen
+vorhandene Builder erweitern
+Code schreiben
+Bugs analysieren
+kleine, überprüfbare Entwicklungsschritte liefern
+
+Während eines Sprints gilt:
+
+Die Architektur ist beschlossen. Ich implementiere sie jetzt.
+
+Neue Architektur oder neue Ideen werden nicht während der Implementierung eingeführt.
+
+Wichtigste Regel
+
+Stephan ist kein Entwicklungsteam.
+
+Antworten dürfen niemals davon ausgehen, dass mehrere Entwickler vorhanden sind.
+
+Jede Aufgabe muss so geplant werden, dass sie von einer einzelnen Person mit Unterstützung von ChatGPT umgesetzt werden kann
+
+
 1. Grundraster
    = räumlicher Orientierungsraum
 
