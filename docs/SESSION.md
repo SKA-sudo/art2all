@@ -12,171 +12,102 @@ Diese Dokumente haben Vorrang vor allen neuen Ideen.
 
 ---
 
-## 2. Zielbild analysieren
-
-Betrachte das kanonische Zielbild.
-
-Vor jedem neuen PoC beantworte zuerst:
-
-> **Welche Wahrnehmungsregel des Zielbildes soll dieser PoC algorithmisch beschreiben?**
-
-Nicht:
-
-> Welchen Builder bauen wir?
-
-Nicht:
-
-> Welchen Code schreiben wir?
-
----
-
-## 3. Wahrnehmung vor Technik
-
-Die Engine entsteht
-
-**nicht**
-
-* aus Anatomie,
-* nicht aus der Mesh-Struktur,
-* nicht aus vorhandenen Datenstrukturen.
-
-Sie entsteht aus der visuellen Wahrnehmung des finalen Kunstwerks.
-
-Die GLB liefert ausschließlich die Geometrie.
-
-Die Architektur entsteht aus den Gesetzen der Wahrnehmung.
-
----
-
-## 4. Vorgehensweise
-
-Immer dieselbe Reihenfolge:
-
-1. Zielbild
-2. Wahrnehmungsanalyse
-3. Algorithmus
-4. Minimaler PoC
-5. Validierung
-6. Code
-7. Commit
-
-Kein Schritt wird übersprungen.
-
----
-
-## 5. Aktueller Fokus
-
-Arbeite ausschließlich am `CURRENT_TASK`.
-
-Vor jeder Änderung:
-
-* aktuellen Code lesen
-* keine neuen Builder
-* keine neue Architektur
-* bestehende Architektur respektieren
-* nur die im SESSION-Dokument genannten Dateien ändern
-
----
-
-## 6. Wahrnehmungsprinzipien (Art2all)
-
-Bei jedem neuen Algorithmus prüfen:
-
-* Unterstützt er die aufsteigende Gesamtkomposition?
-* Unterstützt er den voluminösen Bauch als visuellen Schwerpunkt?
-* Unterstützt er den leicht größeren, freundlichen Kopf?
-* Unterstützt er die Dominanz der Silhouette?
-* Unterstützt er die Organisation der weißen Papierflächen?
-* Bringt er die Engine näher an die Wirkung des finalen Zielbildes?
-
-Wenn eine dieser Fragen mit **Nein** beantwortet wird, wird der Algorithmus zuerst überarbeitet.
-
-Erst danach wird Code geschrieben.
-
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
-
-
-# SESSION – Sprint 08 (PoC 08)
+# SESSION – Sprint 09 (Architektur)
 
 ## Ziel
-Weiterentwicklung der wahrnehmungsbasierten Flügelarchitektur.
+
+Überprüfung eines alternativen wahrnehmungsbasierten Lösungsansatzes für die Art2all-Engine.
 
 ---
 
-## Durchgeführte Arbeiten
+## Wichtigste Erkenntnis
 
-### Primary Gesture
+Während der Diskussion wurde die bisherige Architektur grundlegend hinterfragt.
 
-Die Primary Gesture wurde erstmals separat visualisiert.
+Der Fokus verschob sich von der Konstruktion einzelner Strukturen (Flow Curves, Feather Bands usw.) hin zu einer deutlich einfacheren Grundidee.
 
-Erkenntnis:
+Die Engine soll nicht möglichst viele Strukturen erzeugen.
 
-- Die Primary Gesture trägt bereits einen großen Teil der visuellen Information.
-- Sie beschreibt die dominante Bewegungsrichtung des Flügels.
-- Sie bleibt ein zentraler Bestandteil der Engine.
+Sie soll möglichst wenige grundlegende Regeln besitzen, aus denen komplexe Strukturen entstehen.
 
 ---
 
-### Gesture Tree (Experiment)
+## Architekturwechsel
 
-Es wurde ein erster Gesture-Tree-Prototyp erstellt.
+Bisherige Annahme:
 
-Hypothese:
+* Linien werden konstruiert.
+* Kinderzeichnungen werden entlang dieser Linien platziert.
 
-Primary Gesture
-→ mehrere Flow Curves
-→ Wing Finger Curves
+Neue Arbeitshypothese:
 
-Ergebnis:
+* Die Engine organisiert Beziehungen zwischen den Kinderzeichnungen.
+* Aus diesen Beziehungen entstehen für die menschliche Wahrnehmung Linien, Flügel, Federstrukturen und schließlich die Friedenstaube.
 
-Der PoC liefert interessante Ansätze, reicht jedoch noch nicht aus, um die Architektur anzupassen.
-
-Status:
-OFFENE HYPOTHESE
-
-Keine Übernahme in die Engine.
+Die wahrgenommenen Linien sind somit kein Eingabedatum der Engine, sondern ein emergentes Ergebnis.
 
 ---
 
-## Wichtigste Erkenntnis des Tages
+## Gleichgewicht statt Platzierung
 
-Mehrere Beispiele (einlinige Vogelzeichnungen, Kinderzeichnungen, stilisierte Möwen, Wahrnehmungsbeispiele) führten zu einer neuen gemeinsamen Erkenntnis.
+Ein neues Kinderbild erhält nicht lediglich einen freien Platz.
 
-Die Engine soll nicht die Anatomie eines Vogels modellieren.
+Jedes neue Kinderbild verändert das Gleichgewicht der gesamten Komposition.
 
-Die Engine sucht die minimale visuelle Information, die das menschliche Gehirn benötigt, um eine Friedenstaube zu erkennen.
+Die Engine organisiert deshalb nicht einzelne Positionen, sondern hält die gesamte Friedenstaube in einem harmonischen Gleichgewicht.
 
-Diese Erkenntnis wurde im FOUNDATION-Dokument ergänzt.
+---
+
+## Wachstum
+
+Die Engine besitzt von Beginn an dieselben Regeln.
+
+Nicht die Engine entwickelt sich.
+
+Die Friedenstaube entwickelt sich.
+
+Mit zunehmender Anzahl von Kinderzeichnungen wachsen:
+
+* Organisationsdichte
+* Detailtiefe
+* lokale Struktur
+* visuelle Komplexität
+
+Die grundlegende Wahrnehmungsstruktur bleibt dabei erhalten.
+
+---
+
+## Harmonisierung
+
+Bei wenigen Kinderzeichnungen übernimmt die Engine einen größeren Anteil der Formbildung.
+
+Mathematische Harmonisierung sorgt dafür, dass bereits mit wenigen Beiträgen eine organische und friedliche Taube entsteht.
+
+Mit zunehmender Anzahl der Kinderzeichnungen reduziert sich diese Harmonisierung kontinuierlich.
+
+Die Gesamtform entsteht immer stärker aus den Beziehungen der Kinderzeichnungen selbst.
+
+---
+
+## Einfachheitsprinzip
+
+Eine zentrale Erkenntnis des Tages wurde als neues Architekturprinzip aufgenommen.
+
+> Der Irrtum besteht oft darin, Systeme immer komplexer zu machen.
+>
+> Aus der Einfachheit kann hohe Komplexität entstehen – nicht umgekehrt.
+
+Dieses Prinzip wird zukünftig als Leitgedanke für alle Architekturentscheidungen verwendet.
 
 ---
 
 ## Projektfokus
 
-Heute wurde bewusst entschieden, den Projektfokus wieder zu schärfen.
+Trotz der neuen langfristigen Perspektive bleibt der unmittelbare Fokus unverändert.
 
-Priorität:
+Zuerst wird die Friedenstaube vollständig verstanden und die neue Architektur an ihr validiert.
 
-1. Friedenstaube fertigstellen.
-2. Wirkung erzeugen.
-3. Anschließend wissenschaftliche Verallgemeinerung.
-
-Die allgemeine Wahrnehmungsforschung bleibt wichtig, wird jedoch erst nach Fertigstellung der Friedenstaube weiter vertieft.
-
----
-
-## Vision
-
-Art2all soll möglichst zeitnah als positives Friedenssymbol entstehen.
-
-Motivation:
-
-Kindern – auch aus Krisen- und Kriegsgebieten – die Möglichkeit geben, selbst aktiv einen Beitrag zu leisten.
-
-Ein einzelnes Bild beendet keinen Krieg.
-
-Aber jedes Kind kann dadurch vom Zuschauer zum Mitgestalter eines weltweiten Friedenssymbols werden.
-
-Die Priorität liegt deshalb auf einer funktionierenden ersten Version der Friedenstaube und nicht auf theoretischer Perfektion.
+Erst nach erfolgreicher Validierung wird geprüft, ob sich dieselben Prinzipien auf andere natürliche Objekte übertragen lassen.
 
 ---
 
@@ -184,10 +115,10 @@ Die Priorität liegt deshalb auf einer funktionierenden ersten Version der Fried
 
 PoC 09
 
+Untersuchung einer beziehungsbasierten Komposition.
+
 Fragestellung:
 
-Wie kann aus der Primary Gesture eine Flow Curve entstehen, die tatsächlich zur Organisation des Flügels beiträgt?
+> Welche einfachen Beziehungsregeln zwischen Kinderzeichnungen reichen aus, damit das menschliche Gehirn eine harmonische Friedenstaube wahrnimmt?
 
-Dabei wird ausschließlich die Friedenstaube betrachtet.
-
-Keine Verallgemeinerung auf andere Objekte.
+Der Fokus liegt weiterhin ausschließlich auf der Friedenstaube.
