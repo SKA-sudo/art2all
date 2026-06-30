@@ -90,152 +90,64 @@ Every sprint must produce visible progress toward the final Art2all experience. 
 
 ---
 
-Sprint
+# Sprint 09.x – Local Dove Space
 
-PoC 09 – GDL Space Grid (Start)
+## Status
 
-Ziel des Sprints
+Der eigentliche Local Dove Space wurde noch nicht implementiert.
 
-Zurück zu den Grundlagen.
+Der Sprint diente überwiegend dazu, den Rendering-Pfad für eigene semantische Debug-Geometrie zu validieren.
 
-Nicht die fertige Taube analysieren, sondern das technische Ausgangsmodell sichtbar machen und daraus schrittweise ein minimales GDL entwickeln.
+## Erkenntnisse
 
-Die zentrale Fragestellung lautet:
+- Eigene THREE-Geometrie kann im selben lokalen Koordinatenraum wie das GLB gerendert werden.
+- Eine erste semantische Referenzlinie konnte erfolgreich unabhängig vom GLB dargestellt werden.
+- Das bisherige SpaceGridDebug war als erster Debug-Schritt zu komplex und führte zu unnötigem Debugging.
+- Zukünftig werden neue Builder grundsätzlich mit einer einzigen primitiven Geometrie (Linie oder Punkt) validiert, bevor komplexere Strukturen aufgebaut werden.
 
-Wie wenig räumliche Information benötigen wir, damit die Flügelform bzw. die Taube noch eindeutig wahrgenommen wird?
+## Aktueller Stand
 
-Umgesetzte Arbeiten
-Analysemodus erstellt
+Verifiziert:
 
-Für die Analyse wurde das normale Rendering deaktiviert.
+GLB
+↓
+Eigene semantische Geometrie
+↓
+Rendering funktioniert
 
-Aktiv:
+Noch offen:
 
-Wireframe-GLB
-Technische Kamera
-
-Deaktiviert:
-
-DoveSurface
-PrimaryGestureDebug
-WingFingerCurvesDebug
-GestureTreeDebug
-weitere Debug-Hilfen
-
-Dadurch steht erstmals das technische Modell selbst im Mittelpunkt.
-
-GDLBuilder
-
-Der vorhandene Code wurde erstmals zu einem gemeinsamen GDLBuilder zusammengeführt.
-
-Aktuelle Bestandteile:
-
-Primary Axis
+GLB
+↓
+Local Dove Space
+↓
+Primary Dove Axis
+↓
 Local Wing Space
-Primary Gestures
-Wing Finger Curves
+↓
+Primary Gesture
 
-Diese Builder existieren bereits und wurden erstmals in einer gemeinsamen Datenstruktur zusammengeführt.
+## Nächster Sprint
 
-GDLDebug
+Ziel ist nicht das komplette Grid.
 
-Ein neuer zentraler Debug-Layer wurde aufgebaut.
+Schrittweise Aufbau des Local Dove Space:
 
-Ziel:
+1. X-Achse
+2. Y-Achse
+3. Z-Achse
+4. Bounding Volume
+5. Reduktion auf minimale wahrnehmbare Struktur
 
-einzelne Builder unabhängig voneinander ein- und ausschalten
-keine Vermischung verschiedener Debug-Ausgaben
-Grundlage für zukünftige Analyse
-Debug-Konfiguration
+Erst danach beginnt die Ableitung der Primary Dove Axis.
 
-Ein zentraler Debug-Schalter wurde eingeführt.
+## Engineering-Regel
 
-Dadurch können einzelne Ebenen unabhängig aktiviert werden.
+Keine komplexen Debug-Strukturen mehr.
 
-Dies bildet die Grundlage für zukünftige technische Analysen.
+Jeder neue Builder wird zunächst mit genau einer primitiven Geometrie validiert (Linie oder Punkt). Erst nach erfolgreicher visueller Verifikation wird der nächste Baustein ergänzt.
 
-SpaceGridDebug
-
-Erster Versuch eines unabhängigen Raumgitters.
-
-Ergebnis:
-
-einzelne Linie sichtbar
-mehrere Linien wurden nicht korrekt dargestellt
-
-Vermutung:
-
-Die verwendete drei/drei-Komponente Line eignet sich nicht für das geplante Raumgitter.
-
-Nächster Versuch:
-
-Implementierung des Raumgitters mit THREE.LineSegments bzw. BufferGeometry.
-
-Wichtigste Erkenntnis des Tages
-
-Nicht die Technik war der wichtigste Fortschritt.
-
-Der wichtigste Fortschritt war die Erkenntnis über den Entwicklungsprozess.
-
-Art2all befindet sich nicht mehr in der Ideenphase.
-
-Die Architektur ist beschlossen.
-
-Ab jetzt gilt:
-
-Die Architektur ist beschlossen. Ich implementiere sie jetzt.
-
-Während eines Sprints werden keine neuen Architekturen entwickelt.
-
-Neue Ideen werden ausschließlich gesammelt und erst nach Abschluss des aktuellen Sprints bewertet.
-
-Neuer Arbeitsmodus
-
-Vision und Build werden strikt getrennt.
-
-Vision
-Forschung
-Wahrnehmung
-Architektur
-wissenschaftliche Ansätze
-
-Ergebnis:
-Entscheidung.
-
-Danach wird die Architektur eingefroren.
-
-Build
-
-Während eines Sprints:
-
-keine neuen Builder
-keine neue Architektur
-keine Richtungswechsel
-
-Arbeitsweise:
-
-Eine Aufgabe.
-
-Eine Datei.
-
-Ein sichtbares Ergebnis.
-
-Dann Commit.
-
-Nächster Sprint
-
-SpaceGridDebug fertigstellen.
-
-Nicht das GDL reduzieren.
-
-Nicht neue Builder entwickeln.
-
-Zuerst das vollständige technische Raumgitter sichtbar machen.
-
-Danach beginnt die eigentliche Analyse:
-
-Raumgitter schrittweise reduzieren und nach jedem Schritt prüfen:
-
-Ist die Flügelform bzw. die Taube noch eindeutig wahrnehmbar?
-
-Erst danach folgen weitere Ebenen wie Beziehungsnetz, Verformung und Wahrnehmungsalgorithmen.
+Status:
+Sprint begonnen.
+Architektur unverändert.
+Engineering wird im nächsten Sprint auf Basis der verifizierten Debug-Geometrie fortgesetzt.
