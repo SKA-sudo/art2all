@@ -169,40 +169,42 @@ const gestureTreeFlowCurves = useMemo(() => {
   });
 
   return (
-    <group ref={group} scale={28} position={[0, 6, 0]}>
-      <primitive object={technicalScene} />
-      <SpaceGridDebug />
-      {/*<primitive object={scene} />
-      <GDLDebug gdl={gdl} />
-      <PrimaryGestureDebug gestures={primaryGestures} />
-      <GestureTreeDebug flowCurves={gestureTreeFlowCurves} />
-      <WingFingerCurvesDebug curves={leftWingFingerCurves} />
-      <DoveSurface mesh={mesh} />*/}
+    <>
+      <group ref={group} scale={28} position={[0, 6, 0]}>
+        <primitive object={technicalScene} />
+        <SpaceGridDebug />
+        {/*<primitive object={scene} />
+        <GDLDebug gdl={gdl} />
+        <PrimaryGestureDebug gestures={primaryGestures} />
+        <GestureTreeDebug flowCurves={gestureTreeFlowCurves} />
+        <WingFingerCurvesDebug curves={leftWingFingerCurves} />
+        <DoveSurface mesh={mesh} />*/}
+        
       
-    
-       {/*{primaryAxisPoints && primaryAxis && (
-        <DebugGesture
-        points={primaryAxisPoints}
-        colors={["red", "orange", "white", "cyan", "blue"]}
-        leftTransitionRegion={primaryAxis.leftTransitionRegion}
-        rightTransitionRegion={primaryAxis.rightTransitionRegion}
-        leftShoulder={primaryAxis.leftShoulder}
-        rightShoulder={primaryAxis.rightShoulder}
-        leftWingTip={primaryAxis.leftWingTip}
-        rightWingTip={primaryAxis.rightWingTip}
-        localWingSpace={localWingSpace}
-      />
-           
-      )}
-        <DebugWingCurves
-          root={[-0.8, 1.2, 0]}
-          side={-1}
+         {/*{primaryAxisPoints && primaryAxis && (
+          <DebugGesture
+          points={primaryAxisPoints}
+          colors={["red", "orange", "white", "cyan", "blue"]}
+          leftTransitionRegion={primaryAxis.leftTransitionRegion}
+          rightTransitionRegion={primaryAxis.rightTransitionRegion}
+          leftShoulder={primaryAxis.leftShoulder}
+          rightShoulder={primaryAxis.rightShoulder}
+          leftWingTip={primaryAxis.leftWingTip}
+          rightWingTip={primaryAxis.rightWingTip}
+          localWingSpace={localWingSpace}
         />
+             
+        )}
+          <DebugWingCurves
+            root={[-0.8, 1.2, 0]}
+            side={-1}
+          />
 
-        <DebugWingCurves
-          root={[0.8, 1.2, 0]}
-          side={1}
-        />*/}
-        </group>
+          <DebugWingCurves
+            root={[0.8, 1.2, 0]}
+            side={1}
+          />*/}
+      </group>
+    </>
   );
 }

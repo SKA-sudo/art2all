@@ -476,3 +476,25 @@ Bei jeder zukünftigen Architekturentscheidung wird zuerst gefragt:
 > **Welche einfachere Regel könnte dieses Verhalten entstehen lassen, anstatt es direkt zu programmieren?**
 
 Erst wenn keine einfachere Erklärung gefunden wird, darf eine neue Regel eingeführt werden.
+
+
+### Referenzmodell-Prinzip
+
+Das GLB ist das aktuelle technische Referenzmodell von Art2all.
+
+Es dient dazu,
+
+- räumliche Zusammenhänge zu verstehen,
+- Hypothesen zu validieren,
+- Algorithmen abzuleiten und
+- Wahrnehmungsmodelle zu überprüfen.
+
+Das GLB ist jedoch nicht das Ziel der Entwicklung.
+
+Das eigentliche Ziel ist ein eigenständiges Wahrnehmungsmodell, das erklärt, warum die Taube als Taube erkannt wird.
+
+Dieses Wahrnehmungsmodell wird unabhängig vom GLB entwickelt und kann sich mit zunehmendem Verständnis weiterentwickeln.
+
+Sollte sich später herausstellen, dass das Wahrnehmungsmodell die Zielwahrnehmung besser beschreibt als das ursprüngliche GLB, darf das Referenzmodell angepasst oder ersetzt werden.
+
+Art2all entwickelt daher nicht das GLB weiter, sondern das Verständnis der zugrunde liegenden Wahrnehmung.
