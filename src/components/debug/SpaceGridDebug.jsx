@@ -2,29 +2,27 @@ import { useMemo } from "react";
 import * as THREE from "three";
 
 /**
- * Art2all Semantic Reference Lines
+ * Sprint 09.1 – Local Dove Space X-Achse
  * 
- * Renders the primary dove axis as red lines:
- * leftWingTip → bodyCenter → rightWingTip
+ * Renders a single X-axis line in the local dove coordinate space.
+ * Extends from -1.2 to 1.2 along the X axis through the body center.
  */
 export default function SpaceGridDebug({ gdl }) {
   const geometry = useMemo(() => {
     if (!gdl || !gdl.axis.points.length) return null;
 
-    const points = gdl.axis.points;
-    // Points: [leftWingTip, leftShoulder, bodyCenter, rightShoulder, rightWingTip]
-    const leftWingTip = points[0];
-    const bodyCenter = points[2];
-    const rightWingTip = points[4];
+    const bodyCenter = gdl.axis.points[2];
+    if (!bodyCenter) return null;
 
-    if (!leftWingTip || !bodyCenter || !rightWingTip) return null;
+    // X-axis: horizontal line from -X to +X, passing through body center
+    const xMin = -1.2;
+    const xMax = 1.2;
+    const y = bodyCenter[1];
+    const z = bodyCenter[2];
 
-    // Create line segment positions: tip → center → tip
     const positions = new Float32Array([
-      ...leftWingTip,
-      ...bodyCenter,
-      ...bodyCenter,
-      ...rightWingTip,
+      xMin, y, z,
+      xMax, y, z,
     ]);
 
     const geom = new THREE.BufferGeometry();
@@ -37,7 +35,7 @@ export default function SpaceGridDebug({ gdl }) {
 
   return (
     <lineSegments geometry={geometry}>
-      <lineBasicMaterial color="#ff0000" linewidth={3} />
+      <lineBasicMaterial color="#ff0000" linewidth={2} />
     </lineSegments>
   );
 }
