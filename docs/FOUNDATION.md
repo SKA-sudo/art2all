@@ -18,7 +18,15 @@ mit Unterstützung von ChatGPT
 ################################################################
 ################################################################
 
+## Branch Strategy
 
+main
+Stable product branch.
+
+dev
+Active development and research branch.
+
+Only verified sprint results are merged into main.
 
 ## Vision, Prinzipien und Architektur
 
