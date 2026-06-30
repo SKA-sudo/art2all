@@ -88,6 +88,22 @@ Priority:
 Product First
 Every sprint must produce visible progress toward the final Art2all experience. Research is valuable only when it directly enables or improves the current product goal.
 
+
+## Repository
+
+main
+Stable product branch
+
+dev
+Active development branch
+
+Current branch
+dev
+
+Workflow:
+Alle Entwicklungen erfolgen auf dev.
+Nur abgeschlossene Sprints werden per Pull Request nach main übernommen.
+
 ---
 
 Sprint 10 – Perceptual Reduction
