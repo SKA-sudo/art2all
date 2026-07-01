@@ -1,5 +1,16 @@
 # AI_START (VERPFLICHTEND)
 
+# AI_START
+
+Read first:
+
+1. ../art2all/docs/FOUNDATION.md
+2. ../art2all/docs/SESSION.md
+3. this repository's docs/SESSION.md
+
+This file only extends the global Art2all documentation.
+It does not override global project decisions.
+
 ## 1. FOUNDATION
 
 Lies zuerst vollständig:
@@ -87,7 +98,6 @@ Priority:
 
 Product First
 Every sprint must produce visible progress toward the final Art2all experience. Research is valuable only when it directly enables or improves the current product goal.
-
 
 ## Repository
 

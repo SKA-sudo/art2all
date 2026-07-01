@@ -11,6 +11,52 @@ These documents define the current project state and take precedence over new id
 
 ---
 
+
+Create docs/AI_CLIENTS.md in the art2all repository.
+
+Content:
+
+## AI Client Instructions
+
+# Art2all uses a hierarchical documentation model.
+
+Read documentation in this order:
+
+1. art2all/docs/FOUNDATION.md
+2. art2all/docs/SESSION.md
+3. The current repository's docs/SESSION.md
+
+Rules:
+
+- FOUNDATION.md is the highest-level source of truth.
+- art2all/docs/SESSION.md contains the global project state.
+- Each repository-specific SESSION.md only contains local repository state.
+- Repository SESSION files extend the global documentation.
+- They do not override FOUNDATION.md or the global SESSION.md.
+- Do not duplicate global decisions in research repositories.
+- Do not introduce new architecture during implementation.
+- Keep tasks small enough for one human developer with AI support.
+
+Repository roles:
+
+- art2all = product repository
+- art2all-dove-observation = observation lab
+- art2all-dove-reduction = reduction lab
+
+Branch rules:
+
+- art2all uses dev for active product development and main for stable state.
+- research repositories may work directly on main unless explicitly changed.
+
+AI workflow:
+
+Before starting work:
+1. Read the required documentation.
+2. Identify the current repository.
+3. State the active scope.
+4. Work only inside that scope.
+5. Do not mix product code and research code.
+
 ## Project Philosophy
 
 Art2all is developed by a single developer.
