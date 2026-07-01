@@ -104,56 +104,113 @@ Workflow:
 Alle Entwicklungen erfolgen auf dev.
 Nur abgeschlossene Sprints werden per Pull Request nach main übernommen.
 
+
+## Repository Roles
+
+art2all
+Product development
+
+art2all-dove-observation
+Observation Lab
+
+art2all-dove-reductions
+Perceptual Reduction Lab
+
+Development Flow
+
+Observation Lab
+↓
+
+Reduction Lab
+
+↓
+
+validated perception rule
+
+↓
+
+Art2all Development
+
+Research repositories never contain product code.
+
+The product repository never contains experimental research.
+
+Only validated perception rules are transferred into the product.
+
 ---
 
-Sprint 10 – Perceptual Reduction
-Ziel
+## Research Workflow (ab Sprint 10)
 
-Das Technical Dove Model dient ab sofort als technisches Referenzmodell.
+Mit Sprint 10 beginnt die Forschungsphase der Art2all Engine.
 
-Ausgehend von diesem vollständigen Modell wird die räumliche Information schrittweise reduziert, um zu untersuchen, welche Strukturen für die menschliche Wahrnehmung der Taube tatsächlich notwendig sind.
+Um Forschung und Produktentwicklung klar voneinander zu trennen, werden drei eigenständige Repositories verwendet.
 
-Die zentrale Forschungsfrage lautet:
+### Repository 1 – Observation Lab
 
-Wie wenig räumliche Information benötigt das menschliche Gehirn, um die Taube noch eindeutig zu erkennen?
+Zweck:
 
-Vorgehensweise
+Visuelle Beobachtung des Technical Dove Models.
 
-Das Technical Dove Model wird nicht neu aufgebaut.
+Funktionen:
 
-Es wird systematisch vereinfacht.
+* Modell frei drehen
+* Zoomen
+* Animation ein-/ausschalten
+* Betrachtung aus jeder Perspektive
 
-Nach jeder Reduktion erfolgt ausschließlich eine visuelle Bewertung.
+Dieses Repository dient ausschließlich der Wahrnehmung.
 
-Die Architektur bleibt während des gesamten Sprints unverändert.
+Es werden keine Algorithmen entwickelt.
 
-Arbeitsweise
+---
 
-Jeder Schritt reduziert genau eine räumliche Eigenschaft.
+### Repository 2 – Perceptual Reduction Lab
 
-Nach jeder Änderung wird geprüft:
+Zweck:
 
-Ist die Taube weiterhin eindeutig erkennbar?
-Welche Information ging verloren?
-Welche Information ist offenbar unverzichtbar?
+Systematische Reduktion räumlicher Informationen.
 
-Erst danach folgt die nächste Reduktion.
+Hier wird untersucht,
 
-Erwartetes Ergebnis
+welche geometrischen Informationen entfernt werden können,
 
-Am Ende des Sprints entsteht kein klassisches GDL-Modell.
+ohne dass die Taube für den Menschen ihre eindeutige Erkennbarkeit verliert.
 
-Es entsteht eine erste wissenschaftlich begründete Minimalbeschreibung der Taube.
+Regeln:
 
-Diese bildet anschließend die Grundlage für den semantischen Aufbau der Art2all Engine.
+* Immer nur eine Änderung gleichzeitig
+* Nach jeder Änderung ausschließlich visuelle Bewertung
+* Keine Architekturänderungen
+* Keine Produktfunktionen
 
-Engineering-Regeln
-Das Technical Dove Model bleibt jederzeit lauffähig.
-Es wird niemals mehr als eine Reduktion gleichzeitig durchgeführt.
-Keine neuen Builder.
-Keine Architekturänderungen.
-Jede Änderung muss unmittelbar sichtbar und nachvollziehbar sein.
-Erst nach erfolgreicher Verifikation wird der nächste Reduktionsschritt begonnen.
-Erwarteter Meilenstein
+Ergebnis dieses Repositories sind ausschließlich Wahrnehmungsregeln.
 
-Zum ersten Mal wird die Art2all Engine nicht aus geometrischen Primitivelementen aufgebaut, sondern aus den wahrnehmungsrelevanten Strukturen eines vollständig kontrollierten technischen Referenzmodells abgeleitet.
+---
+
+### Repository 3 – Art2all Development
+
+Dieses Repository bleibt das eigentliche Produkt.
+
+Hier werden ausschließlich Erkenntnisse umgesetzt,
+
+die zuvor im Observation Lab und im Perceptual Reduction Lab nachvollziehbar bestätigt wurden.
+
+Dieses Repository bleibt weiterhin **Product First**.
+
+---
+
+## Verbindlicher Forschungsprozess
+
+Jede neue Fragestellung folgt künftig demselben Ablauf:
+
+1. Beobachtung (Observation Lab)
+2. Wahrnehmung beschreiben
+3. Hypothese formulieren
+4. Reduktion oder Experiment durchführen
+5. Wahrnehmung validieren
+6. Wahrnehmungsregel ableiten
+7. Umsetzung im Art2all Development Repository
+
+Forschung und Produktentwicklung bleiben damit bewusst getrennt.
+
+Das Hauptprojekt übernimmt ausschließlich validierte Erkenntnisse aus den Forschungslaboren.
